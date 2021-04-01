@@ -1,0 +1,16 @@
+_types:
+  MathStudent:
+    template:
+      name: $name
+      age: $age:18
+      class: Math
+
+
+students:
+  - Dori<MathStudent>:
+      name: Dori
+  - Yuval<MathStudent>:
+      name: Dori
+      age: 28
+  - Ayal<MathStudent>:
+      name: Ayal

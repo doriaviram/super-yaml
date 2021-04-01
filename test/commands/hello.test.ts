@@ -1,17 +1,11 @@
-import {expect, test} from '@oclif/test'
+import Hello from '../../src/commands/hello'
+import {ConsoleMock} from '../../src/infra/test-utils/mockers/console.mock'
 
 describe('hello', () => {
-  test
-  .stdout()
-  .command(['hello'])
-  .it('runs hello', ctx => {
-    expect(ctx.stdout).to.contain('hello world')
-  })
-
-  test
-  .stdout()
-  .command(['hello', '--name', 'jeff'])
-  .it('runs hello --name jeff', ctx => {
-    expect(ctx.stdout).to.contain('hello jeff')
+  it('hello => simple flow', async () => {
+    await Hello.run(['--name', 'syml'])
+    expect(ConsoleMock.getInstance().getCalls()).toEqual([
+      ['hello syml from ./src/commands/hello.ts'],
+    ])
   })
 })
