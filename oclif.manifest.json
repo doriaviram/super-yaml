@@ -1,0 +1,47 @@
+{
+  "version": "0.0.0",
+  "commands": {
+    "compile": {
+      "id": "compile",
+      "description": "describe the command here",
+      "pluginName": "super-yaml",
+      "pluginType": "core",
+      "aliases": [],
+      "examples": ["$ super-yaml hello\nhello world from ./src/hello.ts!\n"],
+      "flags": {
+        "source": { "name": "source", "type": "option", "char": "s" }
+      },
+      "args": [{ "name": "file" }]
+    },
+    "hello": {
+      "id": "hello",
+      "description": "describe the command here",
+      "pluginName": "super-yaml",
+      "pluginType": "core",
+      "aliases": [],
+      "examples": ["$ super-yaml hello\nhello world from ./src/hello.ts!\n"],
+      "flags": {
+        "help": {
+          "name": "help",
+          "type": "boolean",
+          "char": "h",
+          "description": "show CLI help",
+          "allowNo": false
+        },
+        "name": {
+          "name": "name",
+          "type": "option",
+          "char": "n",
+          "description": "name to print"
+        },
+        "force": {
+          "name": "force",
+          "type": "boolean",
+          "char": "f",
+          "allowNo": false
+        }
+      },
+      "args": [{ "name": "file" }]
+    }
+  }
+}
