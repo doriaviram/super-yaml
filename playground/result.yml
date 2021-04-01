@@ -1,0 +1,13 @@
+students:
+  - Dori:
+      name: Dori
+      age: 18
+      class: Math
+  - Yuval:
+      name: Dori
+      age: 20
+      class: Math
+  - Ayal:
+      name: Ayal
+      age: 18
+      class: Math
