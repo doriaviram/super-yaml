@@ -11,6 +11,6 @@ students:
       name: Dori
   - Yuval<MathStudent>:
       name: Dori
-      age: 28
+      age: 20
   - Ayal<MathStudent>:
       name: Ayal
