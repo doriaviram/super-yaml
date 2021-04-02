@@ -61,8 +61,11 @@
   "repository": "doriaviram/super-yaml",
   "scripts": {
     "postpack": "rm -f oclif.manifest.json",
-    "pretest": "eslint . --fix --ext .ts --config .eslintrc",
-    "posttest": "eslint . --ext .ts --config .eslintrc",
+    "eslint:fix": "eslint . --fix --ext .ts --config .eslintrc",
+    "eslint:test": "eslint . --ext .ts --config .eslintrc",
+    "prettier:fix": "prettier --write .",
+    "pretest": "yarn run prettier:fix && yarn run eslint:fix",
+    "posttest": "yarn run eslint:test",
     "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
     "test": "jest",
     "version": "oclif-dev readme && git add README.md"

@@ -1,6 +1,6 @@
 {
   "root": true,
-  "parser":"@typescript-eslint/parser",
+  "parser": "@typescript-eslint/parser",
   "plugins": ["jest"],
   "extends": ["eslint:recommended"],
   "env": {
