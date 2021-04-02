@@ -5,18 +5,18 @@ export class ConsoleMock {
 
   public static getInstance(): ConsoleMock {
     if (!ConsoleMock.instance) {
-      ConsoleMock.instance = new ConsoleMock()
+      ConsoleMock.instance = new ConsoleMock();
     }
-    return ConsoleMock.instance
+    return ConsoleMock.instance;
   }
 
   public applyMock() {
-    this.spy = jest.spyOn(console, 'log')
-    this.spy.mockImplementation(() => {})
-    this.spy.mockClear()
+    this.spy = jest.spyOn(console, "log");
+    this.spy.mockImplementation(() => {});
+    this.spy.mockClear();
   }
 
   public getCalls() {
-    if (this.spy) return this.spy.mock.calls
+    return this.spy?.mock.calls;
   }
 }

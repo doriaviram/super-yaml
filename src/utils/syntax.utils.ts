@@ -1,12 +1,13 @@
-import {SymlParam} from '../types/syntax'
+import { SymlParam } from "../types/syntax";
+import { isString } from "./general.utils";
 
-export const parseParam = (param: string): SymlParam | undefined => {
-  if (param.startsWith('$')) {
-    const [key, defaultValue] = param.substring(1).split(':')
+export const parseParam = (param: any): SymlParam | undefined => {
+  if (isString(param) && param.startsWith("$")) {
+    const [key, defaultValue] = param.substring(1).split(":");
     return {
       key,
       defaultValue,
-    }
+    };
   }
-  return undefined
-}
+  return undefined;
+};

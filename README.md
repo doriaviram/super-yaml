@@ -1,7 +1,4 @@
-super-yaml
-==========
-
-
+# super-yaml
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/super-yaml.svg)](https://npmjs.org/package/super-yaml)
@@ -11,11 +8,15 @@ super-yaml
 [![codecov](https://codecov.io/gh/doriaviram/super-yaml/branch/master/graph/badge.svg?token=D2ZTCVDOX1)](https://codecov.io/gh/doriaviram/super-yaml)
 
 <!-- toc -->
-* [Usage](#usage)
-* [Commands](#commands)
+
+- [Usage](#usage)
+- [Commands](#commands)
 <!-- tocstop -->
+
 # Usage
+
 <!-- usage -->
+
 ```sh-session
 $ npm install -g super-yaml
 $ super-yaml COMMAND
@@ -27,11 +28,15 @@ USAGE
   $ super-yaml COMMAND
 ...
 ```
+
 <!-- usagestop -->
+
 # Commands
+
 <!-- commands -->
-* [`super-yaml hello [FILE]`](#super-yaml-hello-file)
-* [`super-yaml help [COMMAND]`](#super-yaml-help-command)
+
+- [`super-yaml hello [FILE]`](#super-yaml-hello-file)
+- [`super-yaml help [COMMAND]`](#super-yaml-help-command)
 
 ## `super-yaml hello [FILE]`
 
@@ -69,4 +74,5 @@ OPTIONS
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.2/src/commands/help.ts)_
+
 <!-- commandsstop -->
