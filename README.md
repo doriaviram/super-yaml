@@ -13,6 +13,10 @@
 - [Commands](#commands)
 <!-- tocstop -->
 
+# Requirements
+`nodejs >= 12`
+
+
 # Usage
 
 <!-- usage -->
