@@ -25,5 +25,6 @@ describe("general.utils", () => {
     expect(isString({})).toBeFalsy();
     expect(isString(undefined)).toBeFalsy();
     expect(isString([])).toBeFalsy();
+    expect(isString([])).toBeTruthy();
   });
 });
