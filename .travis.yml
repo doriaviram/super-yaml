@@ -1,6 +1,13 @@
 language: node_js
 node_js:
   - node
+  - lts/*
+  - 15
+  - 14
+  - 13
+  - 12
+  - 11
+  - 10
 
 cache: yarn
 
@@ -8,6 +15,12 @@ script:
   - ./bin/run --version
   - ./bin/run --help
   - yarn run test
+
+deploy:
+  provider: script
+  script: yarn run deploy
+  on:
+    branch: master
 
 after_success:
   - ./node_modules/.bin/nyc report --reporter text-lcov > coverage.lcov
