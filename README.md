@@ -1,17 +1,21 @@
 # super-yaml
 
-[![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
+
 [![Version](https://img.shields.io/npm/v/super-yaml.svg)](https://npmjs.org/package/super-yaml)
-[![Codecov](https://codecov.io/gh/doriaviram/super-yaml/branch/master/graph/badge.svg)](https://codecov.io/gh/doriaviram/super-yaml)
 [![Downloads/week](https://img.shields.io/npm/dw/super-yaml.svg)](https://npmjs.org/package/super-yaml)
-[![License](https://img.shields.io/npm/l/super-yaml.svg)](https://github.com/doriaviram/super-yaml/blob/master/package.json)
 [![codecov](https://codecov.io/gh/doriaviram/super-yaml/branch/master/graph/badge.svg?token=D2ZTCVDOX1)](https://codecov.io/gh/doriaviram/super-yaml)
+[![License](https://img.shields.io/npm/l/super-yaml.svg)](https://github.com/doriaviram/super-yaml/blob/master/package.json)
+[![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 
 <!-- toc -->
 
 - [Usage](#usage)
 - [Commands](#commands)
 <!-- tocstop -->
+
+# Requirements
+`nodejs >= 12`
+
 
 # Usage
 

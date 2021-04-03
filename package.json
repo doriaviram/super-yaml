@@ -65,6 +65,7 @@
     "eslint:test": "eslint . --ext .ts --config .eslintrc",
     "prettier:fix": "prettier --write .",
     "pretest": "yarn run prettier:fix && yarn run eslint:fix",
+    "deploy": "echo TODO",
     "posttest": "yarn run eslint:test",
     "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
     "test": "jest",
