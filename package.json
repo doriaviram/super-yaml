@@ -66,9 +66,10 @@
     "prettier:fix": "prettier --write .",
     "pretest": "yarn run prettier:fix && yarn run eslint:fix",
     "deploy": "echo TODO",
-    "posttest": "yarn run eslint:test",
+    "posttest": "yarn run eslint:test && prettier --check .",
     "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
     "test": "jest",
+    "test:ci": "jest && yarn run posttest",
     "version": "oclif-dev readme && git add README.md"
   },
   "types": "lib/index.d.ts"

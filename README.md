@@ -1,6 +1,5 @@
 # super-yaml
 
-
 [![Version](https://img.shields.io/npm/v/super-yaml.svg)](https://npmjs.org/package/super-yaml)
 [![Downloads/week](https://img.shields.io/npm/dw/super-yaml.svg)](https://npmjs.org/package/super-yaml)
 [![codecov](https://codecov.io/gh/doriaviram/super-yaml/branch/master/graph/badge.svg?token=D2ZTCVDOX1)](https://codecov.io/gh/doriaviram/super-yaml)
@@ -14,8 +13,8 @@
 <!-- tocstop -->
 
 # Requirements
-`nodejs >= 12`
 
+`nodejs >= 12`
 
 # Usage
 
