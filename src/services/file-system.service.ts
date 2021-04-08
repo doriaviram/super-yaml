@@ -1,22 +1,19 @@
 import { dump, load } from "js-yaml";
-import { readFile, writeFile } from "fs";
-import { promisify } from "util";
-
+import { promises } from "fs";
 import { SymlObject } from "../types/syntax";
-
-const readFileAsync = promisify(readFile);
-const writeFileAsync = promisify(writeFile);
 
 export class FileSystemService {
   static async readYaml(path: string): Promise<SymlObject> {
-    const fileContents = await readFileAsync(path, { encoding: "utf8" });
+    const fileContents = await promises.readFile(path, { encoding: "utf8" });
     const yml = load(fileContents);
-    if (yml) return yml as SymlObject;
-    throw Error("TBD");
+    if (typeof yml === "object") {
+      return yml as SymlObject;
+    }
+    throw new Error(`File '${path}' is not valid YAML`);
   }
 
-  static async writeYaml(content: object, path: string): Promise<void> {
+  static async writeYaml(path: string, content: object): Promise<void> {
     const ymlContent = dump(content);
-    await writeFileAsync(path, ymlContent, "utf8");
+    await promises.writeFile(path, ymlContent, "utf8");
   }
 }

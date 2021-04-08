@@ -18,7 +18,7 @@ hello world from ./src/hello.ts!
 
   async run() {
     const { flags } = this.parse(Hello);
-    const name = flags.name ?? "world";
+    const name = flags.name;
     // eslint-disable-next-line no-console
     console.log(`hello ${name} from ./src/commands/hello.ts`);
   }

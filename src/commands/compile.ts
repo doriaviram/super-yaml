@@ -48,6 +48,6 @@ hello world from ./src/hello.ts!
     };
 
     const result = recursiveBuild(yml);
-    await FileSystemService.writeYaml(result, "./playground/result.yml");
+    await FileSystemService.writeYaml("./playground/result.yml", result);
   }
 }
