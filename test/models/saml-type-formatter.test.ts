@@ -2,15 +2,15 @@ import { SamlTypeFormatter } from "../../src/models/saml-type-formatter";
 
 describe("SamlTypeFormatter", () => {
   it("build => simple flow", () => {
-    const formmater = new SamlTypeFormatter({
+    const template = {
       template: {
         someNumb: 2,
         someString: "$name",
         someStringWithDefault: "$status:Free",
       },
-    });
+    };
 
-    const result = formmater.build({
+    const result = SamlTypeFormatter.formatTemplate(template, {
       name: "Name",
     });
 
@@ -22,14 +22,14 @@ describe("SamlTypeFormatter", () => {
   });
 
   it("build => multiple params with the same name", () => {
-    const formmater = new SamlTypeFormatter({
+    const template = {
       template: {
         someString: "$name",
         someStringWithDefault: "$name",
       },
-    });
+    };
 
-    const result = formmater.build({
+    const result = SamlTypeFormatter.formatTemplate(template, {
       name: "Name",
     });
 
@@ -40,15 +40,15 @@ describe("SamlTypeFormatter", () => {
   });
 
   it("build => keep original types", () => {
-    const formmater = new SamlTypeFormatter({
+    const template = {
       template: {
         someNumb: 2,
         someNumbAsString: "2",
         someBool: true,
       },
-    });
+    };
 
-    const result = formmater.build({});
+    const result = SamlTypeFormatter.formatTemplate(template, {});
 
     expect(result).toStrictEqual({
       someNumb: 2,
@@ -58,14 +58,34 @@ describe("SamlTypeFormatter", () => {
   });
 
   it("build => missing parameter", () => {
-    const formmater = new SamlTypeFormatter({
+    const template = {
       template: {
         someNumb: "$name",
       },
-    });
+    };
 
     expect(() => {
-      formmater.build({});
+      SamlTypeFormatter.formatTemplate(template, {});
     }).toThrowError(new Error(`Missing 'name' parameter`));
+  });
+
+  it("build => nested templates", () => {
+    const template = {
+      template: {
+        someObject: {
+          someString: "$name",
+        },
+      },
+    };
+
+    const result = SamlTypeFormatter.formatTemplate(template, {
+      name: "Name",
+    });
+
+    expect(result).toStrictEqual({
+      someObject: {
+        someString: "Name",
+      },
+    });
   });
 });
