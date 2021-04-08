@@ -1,4 +1,9 @@
-import { isNative, isString, noop } from "../../src/utils/general.utils";
+import {
+  isNative,
+  isString,
+  mapKeysDeep,
+  noop,
+} from "../../src/utils/general.utils";
 
 describe("general.utils", () => {
   it("noop", () => {
@@ -25,5 +30,22 @@ describe("general.utils", () => {
     expect(isString({})).toBeFalsy();
     expect(isString(undefined)).toBeFalsy();
     expect(isString([])).toBeFalsy();
+  });
+
+  it("mapKeysDeep", () => {
+    const obj = { a: "b", c: "d", e: { c: "f", g: { c: "h" } } };
+
+    const result = mapKeysDeep(obj, (value: any, key: any) => {
+      if (key === "c") {
+        return "zzz";
+      }
+      return key;
+    });
+
+    expect(result).toEqual({
+      a: "b",
+      zzz: "d",
+      e: { zzz: "f", g: { zzz: "h" } },
+    });
   });
 });

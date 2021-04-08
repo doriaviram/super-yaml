@@ -1,4 +1,6 @@
-import { parseParam } from "../../src/utils/syntax.utils";
+import { extractTypeName, parseParam } from "../../src/utils/syntax.utils";
+import { ClientYmlKey } from "../../src/types/syntax";
+import { ConfigService } from "../../src/services/config.service";
 
 describe("syntax.utils", () => {
   it("parseParam => param", () => {
@@ -17,5 +19,44 @@ describe("syntax.utils", () => {
       key: "name",
       defaultValue: "2",
     });
+  });
+
+  it("extractTypeName => simple flow", () => {
+    expect<ClientYmlKey>(extractTypeName("SomeKey<SuperType>")).toStrictEqual({
+      clientKey: "SomeKey",
+      type: "SuperType",
+    });
+  });
+
+  it("extractTypeName => without type", () => {
+    expect<ClientYmlKey>(extractTypeName("SomeKey")).toStrictEqual({
+      clientKey: "SomeKey",
+    });
+  });
+
+  it("extractTypeName => custom config", () => {
+    ConfigService.initConfig({
+      customerYmlKeyPrefix: "$$",
+      customerYmlKeySuffix: "%%",
+    });
+    expect<ClientYmlKey>(extractTypeName("SomeKey$$SuperType%%")).toStrictEqual(
+      {
+        clientKey: "SomeKey",
+        type: "SuperType",
+      }
+    );
+  });
+
+  it("extractTypeName => custom config => same string", () => {
+    ConfigService.initConfig({
+      customerYmlKeyPrefix: "$$",
+      customerYmlKeySuffix: "$$",
+    });
+    expect<ClientYmlKey>(extractTypeName("SomeKey$$SuperType$$")).toStrictEqual(
+      {
+        clientKey: "SomeKey",
+        type: "SuperType",
+      }
+    );
   });
 });
