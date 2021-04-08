@@ -6,8 +6,44 @@
 [![License](https://img.shields.io/npm/l/super-yaml.svg)](https://github.com/doriaviram/super-yaml/blob/master/package.json)
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 
+## Intro
+
+super-yaml is a tool that helps you write enhanced yaml's and compile them to regular yaml `.yml` files.
+
+**In**
+
+```yaml
+_types:
+  Student:
+    template:
+      name: $name
+      class: Math
+
+TestStudent1<Student>:
+  name: SuperName1
+TestStudent2<Student>:
+  name: SuperName2
+DummyStudent:
+  name: "DummyStudent"
+```
+
+**Out**
+
+```yaml
+TestStudent1:
+  name: "SuperName1"
+  class: "Math"
+TestStudent2:
+  name: "SuperName2"
+  class: "Math"
+DummyStudent:
+  name: "DummyStudent"
+```
+
 <!-- toc -->
 
+- [super-yaml](#super-yaml)
+- [Requirements](#requirements)
 - [Usage](#usage)
 - [Commands](#commands)
 <!-- tocstop -->
@@ -38,28 +74,27 @@ USAGE
 
 <!-- commands -->
 
-- [`super-yaml hello [FILE]`](#super-yaml-hello-file)
+- [`super-yaml compile`](#super-yaml-compile)
 - [`super-yaml help [COMMAND]`](#super-yaml-help-command)
 
-## `super-yaml hello [FILE]`
+## `super-yaml compile`
 
-describe the command here
+Compile syml to simple yml
 
 ```
 USAGE
-  $ super-yaml hello [FILE]
+  $ super-yaml compile
 
 OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  -s, --source=source  (required)
+  -t, --target=target  (required)
 
-EXAMPLE
-  $ super-yaml hello
-  hello world from ./src/hello.ts!
+EXAMPLES
+  $ super-yaml compile -s config.syml -t config.yml
+  $ super-yaml compile --source config.syml --target config.yml
 ```
 
-_See code: [src/commands/hello.ts](https://github.com/doriaviram/super-yaml/blob/v0.0.0/src/commands/hello.ts)_
+_See code: [src/commands/compile.ts](https://github.com/doriaviram/super-yaml/blob/v0.0.0/src/commands/compile.ts)_
 
 ## `super-yaml help [COMMAND]`
 

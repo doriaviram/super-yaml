@@ -15,8 +15,6 @@ export default class Compile extends Command {
     target: flags.string({ char: "t", required: true }),
   };
 
-  static args = [{ name: "file" }];
-
   async run() {
     const { flags } = this.parse(Compile);
     const { source, target } = flags;

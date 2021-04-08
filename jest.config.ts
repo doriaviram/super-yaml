@@ -4,6 +4,6 @@ export default {
   collectCoverage: true,
   coverageProvider: "babel",
   testEnvironment: "node",
-  setupFilesAfterEnv: ["./src/infra/test-utils/jest.setup.js"],
+  setupFilesAfterEnv: ["./src/infra/test-utils/jest.setup.ts"],
   collectCoverageFrom: ["./src/**/*.[jt]s"],
 };
