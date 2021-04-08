@@ -3,45 +3,29 @@
   "commands": {
     "compile": {
       "id": "compile",
-      "description": "describe the command here",
+      "description": "Compile syml to simple yml",
       "pluginName": "super-yaml",
       "pluginType": "core",
       "aliases": [],
-      "examples": ["$ super-yaml hello\nhello world from ./src/hello.ts!\n"],
+      "examples": [
+        "$ super-yaml compile -s config.syml -t config.yml",
+        "$ super-yaml compile --source config.syml --target config.yml"
+      ],
       "flags": {
-        "source": { "name": "source", "type": "option", "char": "s" }
-      },
-      "args": [{ "name": "file" }]
-    },
-    "hello": {
-      "id": "hello",
-      "description": "describe the command here",
-      "pluginName": "super-yaml",
-      "pluginType": "core",
-      "aliases": [],
-      "examples": ["$ super-yaml hello\nhello world from ./src/hello.ts!\n"],
-      "flags": {
-        "help": {
-          "name": "help",
-          "type": "boolean",
-          "char": "h",
-          "description": "show CLI help",
-          "allowNo": false
-        },
-        "name": {
-          "name": "name",
+        "source": {
+          "name": "source",
           "type": "option",
-          "char": "n",
-          "description": "name to print"
+          "char": "s",
+          "required": true
         },
-        "force": {
-          "name": "force",
-          "type": "boolean",
-          "char": "f",
-          "allowNo": false
+        "target": {
+          "name": "target",
+          "type": "option",
+          "char": "t",
+          "required": true
         }
       },
-      "args": [{ "name": "file" }]
+      "args": []
     }
   }
 }
