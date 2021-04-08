@@ -1,7 +1,7 @@
 import { SamlTypeFormatter } from "../../src/models/saml-type-formatter";
 
 describe("SamlTypeFormatter", () => {
-  it("build => simple flow", () => {
+  it("formatTemplate => simple flow", () => {
     const template = {
       template: {
         someNumb: 2,
@@ -21,7 +21,7 @@ describe("SamlTypeFormatter", () => {
     });
   });
 
-  it("build => multiple params with the same name", () => {
+  it("formatTemplate => multiple params with the same name", () => {
     const template = {
       template: {
         someString: "$name",
@@ -39,7 +39,7 @@ describe("SamlTypeFormatter", () => {
     });
   });
 
-  it("build => keep original types", () => {
+  it("formatTemplate => keep original types", () => {
     const template = {
       template: {
         someNumb: 2,
@@ -57,7 +57,7 @@ describe("SamlTypeFormatter", () => {
     });
   });
 
-  it("build => missing parameter", () => {
+  it("formatTemplate => missing parameter", () => {
     const template = {
       template: {
         someNumb: "$name",
@@ -69,7 +69,7 @@ describe("SamlTypeFormatter", () => {
     }).toThrowError(new Error(`Missing 'name' parameter`));
   });
 
-  it("build => nested templates", () => {
+  it("formatTemplate => nested templates", () => {
     const template = {
       template: {
         someObject: {
@@ -85,6 +85,32 @@ describe("SamlTypeFormatter", () => {
     expect(result).toStrictEqual({
       someObject: {
         someString: "Name",
+      },
+    });
+  });
+
+  it("formatTemplate => parameter in list", () => {
+    const template = {
+      template: {
+        someObject: {
+          someString: [
+            "SomeName",
+            "$name"
+          ],
+        },
+      },
+    };
+
+    const result = SamlTypeFormatter.formatTemplate(template, {
+      name: "Name",
+    });
+
+    expect(result).toStrictEqual({
+      someObject: {
+        someString: [
+            "SomeName",
+            "Name"
+          ],
       },
     });
   });
