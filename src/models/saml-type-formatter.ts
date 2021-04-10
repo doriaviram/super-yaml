@@ -5,6 +5,7 @@ import { ObjectOf } from "../types/common.types";
 import { cloneDeepWith } from "lodash";
 
 export class SamlTypeFormatter {
+  //TODO: Migrate to service
   public static formatTemplate(
     type: SymlType,
     userObject: ObjectOf<any>

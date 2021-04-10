@@ -1,4 +1,5 @@
 import { PathLike, promises } from "fs";
+import { resolve } from "path";
 type BufferEncoding =
   | "ascii"
   | "utf8"
@@ -32,9 +33,9 @@ export class FsMock {
       | { encoding: BufferEncoding; flag?: string | number }
       | BufferEncoding
   ): Promise<string> {
+    const resolvedPath = resolve(path.toString());
     const instance = FsMock.getInstance();
-    if (instance.storage[path.toString()])
-      return instance.storage[path.toString()];
+    if (instance.storage[resolvedPath]) return instance.storage[resolvedPath];
     throw new Error("..");
   }
 
@@ -52,7 +53,8 @@ export class FsMock {
       | string
       | null
   ): Promise<void> {
-    FsMock.getInstance().storage[path.toString()] = data;
+    const resolvedPath = resolve(path.toString());
+    FsMock.getInstance().storage[resolvedPath] = data;
   }
 
   public applyMock() {

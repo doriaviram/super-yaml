@@ -1,14 +1,17 @@
+import { ObjectOf } from "./common.types";
+
 export interface SymlParam {
   key: string;
   defaultValue?: string;
 }
 
 export interface SymlType {
-  template: { [key: string]: any };
+  template: ObjectOf<any>;
 }
 
 export interface SymlObject {
-  _types: { [key: string]: SymlType };
+  _types?: ObjectOf<SymlType>;
+  _import?: string[];
   [key: string]: any;
 }
 
