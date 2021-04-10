@@ -1,6 +1,7 @@
 import { Command, flags } from "@oclif/command";
 import { FileSystemService } from "../services/file-system.service";
 import { CompileService } from "../services/compile.service";
+import { ImportService } from "../services/import.service";
 
 export default class Compile extends Command {
   static description = "Compile syml to simple yml";
@@ -20,7 +21,8 @@ export default class Compile extends Command {
     const { source, target } = flags;
 
     const syml = await FileSystemService.readYaml(source);
-    const result = CompileService.compileSaml(syml);
+    const types = await ImportService.importAllTypes(syml);
+    const result = CompileService.compileSaml(syml, types);
     await FileSystemService.writeYaml(target, result);
   }
 }

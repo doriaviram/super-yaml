@@ -38,4 +38,63 @@ describe("compile", () => {
     });
     expect(consoleCalls).toEqual([]);
   });
+
+  it("compile => no types", async () => {
+    const clientYml: SymlObject = {
+      DummyStudent: {
+        name: "DummyStudent",
+      },
+    };
+    await FileSystemService.writeYaml("test.syml", clientYml);
+
+    await Compile.run(["--source", "test.syml", "--target", "test.yml"]);
+
+    const result = await FileSystemService.readYaml("test.yml");
+    const consoleCalls = ConsoleMock.getInstance().getCalls();
+    expect(result).toStrictEqual({
+      DummyStudent: {
+        name: "DummyStudent",
+      },
+    });
+    expect(consoleCalls).toEqual([]);
+  });
+
+  it("compile => require types", async () => {
+    const typesYml: SymlObject = {
+      _types: {
+        Student: {
+          template: {
+            name: "$name",
+            class: "Math",
+          },
+        },
+      },
+    };
+    const clientYml: SymlObject = {
+      _import: ["./types.syml"],
+      "TestStudent<Student>": {
+        name: "SuperName",
+      },
+      DummyStudent: {
+        name: "DummyStudent",
+      },
+    };
+    await FileSystemService.writeYaml("./types.syml", typesYml);
+    await FileSystemService.writeYaml("./test.syml", clientYml);
+
+    await Compile.run(["--source", "./test.syml", "--target", "./test.yml"]);
+
+    const result = await FileSystemService.readYaml("test.yml");
+    const consoleCalls = ConsoleMock.getInstance().getCalls();
+    expect(result).toStrictEqual({
+      TestStudent: {
+        name: "SuperName",
+        class: "Math",
+      },
+      DummyStudent: {
+        name: "DummyStudent",
+      },
+    });
+    expect(consoleCalls).toEqual([]);
+  });
 });

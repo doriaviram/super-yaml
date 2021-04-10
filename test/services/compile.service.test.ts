@@ -20,12 +20,34 @@ describe("CompileService", () => {
       },
     };
 
-    const result = CompileService.compileSaml(clientYml);
+    const result = CompileService.compileSaml(clientYml, clientYml._types);
 
     expect(result).toStrictEqual({
       TestStudent: {
         name: "SuperName",
         class: "Math",
+      },
+      DummyStudent: {
+        name: "DummyStudent",
+      },
+    });
+  });
+
+  it("compileSaml => no types", async () => {
+    const clientYml: SymlObject = {
+      TestStudent: {
+        name: "SuperName",
+      },
+      DummyStudent: {
+        name: "DummyStudent",
+      },
+    };
+
+    const result = CompileService.compileSaml(clientYml);
+
+    expect(result).toStrictEqual({
+      TestStudent: {
+        name: "SuperName",
       },
       DummyStudent: {
         name: "DummyStudent",
