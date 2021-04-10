@@ -10,6 +10,10 @@
 
 super-yaml is a tool that helps you write enhanced yaml's and compile them to regular yaml `.yml` files.
 
+## Features
+
+### Common types
+
 **In**
 
 ```yaml
@@ -33,6 +37,79 @@ DummyStudent:
 TestStudent1:
   name: "SuperName1"
   class: "Math"
+TestStudent2:
+  name: "SuperName2"
+  class: "Math"
+DummyStudent:
+  name: "DummyStudent"
+```
+
+### Default values
+
+**In**
+
+```yaml
+_types:
+  Student:
+    template:
+      name: $name
+      class: $class:Math
+
+TestStudent1<Student>:
+  name: SuperName1
+  class: Geo
+TestStudent2<Student>:
+  name: SuperName2
+DummyStudent:
+  name: "DummyStudent"
+```
+
+**Out**
+
+```yaml
+TestStudent1:
+  name: "SuperName1"
+  class: "Geo"
+TestStudent2:
+  name: "SuperName2"
+  class: "Math"
+DummyStudent:
+  name: "DummyStudent"
+```
+
+## DRY - Imports
+
+**In**
+
+`shared.syml`
+```yaml
+_types:
+  Student:
+    template:
+      name: $name
+      class: $class:Math
+```
+
+`config.syml`
+```yaml
+_import:
+  - ./shared.syml
+
+TestStudent1<Student>:
+  name: SuperName1
+  class: Geo
+TestStudent2<Student>:
+  name: SuperName2
+DummyStudent:
+  name: "DummyStudent"
+```
+
+**Out**
+
+```yaml
+TestStudent1:
+  name: "SuperName1"
+  class: "Geo"
 TestStudent2:
   name: "SuperName2"
   class: "Math"
