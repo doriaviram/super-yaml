@@ -82,6 +82,7 @@ DummyStudent:
 **In**
 
 `shared.syml`
+
 ```yaml
 _types:
   Student:
@@ -91,6 +92,7 @@ _types:
 ```
 
 `config.syml`
+
 ```yaml
 _import:
   - ./shared.syml
