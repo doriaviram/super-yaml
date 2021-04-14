@@ -1,14 +1,14 @@
 import Compile from "../../src/commands/compile";
 import { FileSystemService } from "../../src/services/file-system.service";
-import { SymlObject } from "../../src/types/syntax";
+import { SymlSyntax } from "../../src/types/syntax";
 import { ConsoleMock } from "../../src/infra/test-utils/mockers/console.mock";
 
 describe("compile", () => {
   it("compile => simple flow", async () => {
-    const clientYml: SymlObject = {
-      _types: {
+    const clientYml: SymlSyntax = {
+      "@types": {
         Student: {
-          template: {
+          properties: {
             name: "$name",
             class: "Math",
           },
@@ -40,7 +40,7 @@ describe("compile", () => {
   });
 
   it("compile => no types", async () => {
-    const clientYml: SymlObject = {
+    const clientYml: SymlSyntax = {
       DummyStudent: {
         name: "DummyStudent",
       },
@@ -60,18 +60,18 @@ describe("compile", () => {
   });
 
   it("compile => require types", async () => {
-    const typesYml: SymlObject = {
-      _types: {
+    const typesYml: SymlSyntax = {
+      "@types": {
         Student: {
-          template: {
+          properties: {
             name: "$name",
             class: "Math",
           },
         },
       },
     };
-    const clientYml: SymlObject = {
-      _import: ["./types.syml"],
+    const clientYml: SymlSyntax = {
+      "@import": ["./types.syml"],
       "TestStudent<Student>": {
         name: "SuperName",
       },

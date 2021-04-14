@@ -10,12 +10,12 @@ export class SamlTypeFormatter {
     type: SymlType,
     userObject: ObjectOf<any>
   ): ObjectOf<any> {
-    return cloneDeepWith<object>(type.template, (value) => {
+    return cloneDeepWith<object>(type.properties, (value) => {
       if (isString(value)) {
         const symlParameter = parseParam(value);
         if (symlParameter) {
           if (!userObject[symlParameter.key] && !symlParameter.defaultValue)
-            throw new Error(`Missing '${symlParameter.key}' parameter`);
+            throw new Error(`Missing '${symlParameter.key}' property`);
           return userObject[symlParameter.key] || symlParameter.defaultValue;
         }
       }

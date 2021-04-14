@@ -5,14 +5,20 @@ export interface SymlParam {
   defaultValue?: string;
 }
 
+export interface SymlSyntax {
+  "@types"?: ObjectOf<SymlType>;
+  "@import"?: string[];
+  [key: string]: any;
+}
+
 export interface SymlType {
-  template: ObjectOf<any>;
+  properties: ObjectOf<any>;
 }
 
 export interface SymlObject {
-  _types?: ObjectOf<SymlType>;
-  _import?: string[];
-  [key: string]: any;
+  types: ObjectOf<SymlType>;
+  import: string[];
+  clientData: ObjectOf<any>;
 }
 
 export interface ClientYmlKey {
