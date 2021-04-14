@@ -3,7 +3,7 @@ import { SamlTypeFormatter } from "../../src/models/saml-type-formatter";
 describe("SamlTypeFormatter", () => {
   it("build => simple flow", () => {
     const template = {
-      template: {
+      properties: {
         someNumb: 2,
         someString: "$name",
         someStringWithDefault: "$status:Free",
@@ -23,7 +23,7 @@ describe("SamlTypeFormatter", () => {
 
   it("build => multiple params with the same name", () => {
     const template = {
-      template: {
+      properties: {
         someString: "$name",
         someStringWithDefault: "$name",
       },
@@ -41,7 +41,7 @@ describe("SamlTypeFormatter", () => {
 
   it("build => keep original types", () => {
     const template = {
-      template: {
+      properties: {
         someNumb: 2,
         someNumbAsString: "2",
         someBool: true,
@@ -59,19 +59,19 @@ describe("SamlTypeFormatter", () => {
 
   it("build => missing parameter", () => {
     const template = {
-      template: {
+      properties: {
         someNumb: "$name",
       },
     };
 
     expect(() => {
       SamlTypeFormatter.formatTemplate(template, {});
-    }).toThrowError(new Error(`Missing 'name' parameter`));
+    }).toThrowError(new Error(`Missing 'name' property`));
   });
 
   it("build => nested templates", () => {
     const template = {
-      template: {
+      properties: {
         someObject: {
           someString: "$name",
         },

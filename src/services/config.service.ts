@@ -1,15 +1,18 @@
 export interface Config {
   customerYmlKeyPrefix: string;
   customerYmlKeySuffix: string;
+  variablePrefix: string;
 }
 
 export interface ClientConfig {
   customerYmlKeyPrefix?: string;
   customerYmlKeySuffix?: string;
+  variablePrefix?: string;
 }
 
 const DEFAULT_CONFIG: Config = {
   customerYmlKeyPrefix: "<",
+  variablePrefix: "@",
   customerYmlKeySuffix: ">",
 };
 

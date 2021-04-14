@@ -17,64 +17,31 @@ super-yaml is a tool that helps you write enhanced yaml's and compile them to re
 **In**
 
 ```yaml
-_types:
-  Student:
-    template:
-      name: $name
-      class: Math
+@types:
+  MyCoolType:
+    properties:
+      englishName: $name (expect name parameter)
+      britishName: $name
+      age: $age:25 (default value)
 
-TestStudent1<Student>:
-  name: SuperName1
-TestStudent2<Student>:
-  name: SuperName2
-DummyStudent:
-  name: "DummyStudent"
+CoolExample1<MyCoolType>:
+  name: SuperYaml
+CoolExample2<MyCoolType>:
+  name: Syml
+  age: 27
 ```
 
 **Out**
 
 ```yaml
-TestStudent1:
-  name: "SuperName1"
-  class: "Math"
-TestStudent2:
-  name: "SuperName2"
-  class: "Math"
-DummyStudent:
-  name: "DummyStudent"
-```
-
-### Default values
-
-**In**
-
-```yaml
-_types:
-  Student:
-    template:
-      name: $name
-      class: $class:Math
-
-TestStudent1<Student>:
-  name: SuperName1
-  class: Geo
-TestStudent2<Student>:
-  name: SuperName2
-DummyStudent:
-  name: "DummyStudent"
-```
-
-**Out**
-
-```yaml
-TestStudent1:
-  name: "SuperName1"
-  class: "Geo"
-TestStudent2:
-  name: "SuperName2"
-  class: "Math"
-DummyStudent:
-  name: "DummyStudent"
+CoolExample1:
+  englishName: "SuperYaml"
+  britishName: "SuperYaml"
+  age: 25
+CoolExample2:
+  englishName: "Syml"
+  britishName: "Syml"
+  age: 27
 ```
 
 ## DRY - Imports
@@ -84,39 +51,38 @@ DummyStudent:
 `shared.syml`
 
 ```yaml
-_types:
-  Student:
-    template:
-      name: $name
-      class: $class:Math
+@types:
+   MyCoolType:
+     properties:
+       englishName: $name (expect name parameter)
+       britishName: $name
+       age: $age:25 (default value)
 ```
 
 `config.syml`
 
 ```yaml
-_import:
+@import:
   - ./shared.syml
 
-TestStudent1<Student>:
-  name: SuperName1
-  class: Geo
-TestStudent2<Student>:
-  name: SuperName2
-DummyStudent:
-  name: "DummyStudent"
+CoolExample1<MyCoolType>:
+  name: SuperYaml
+CoolExample2<MyCoolType>:
+  name: Syml
+  age: 27
 ```
 
 **Out**
 
 ```yaml
-TestStudent1:
-  name: "SuperName1"
-  class: "Geo"
-TestStudent2:
-  name: "SuperName2"
-  class: "Math"
-DummyStudent:
-  name: "DummyStudent"
+CoolExample1:
+  englishName: "SuperYaml"
+  britishName: "SuperYaml"
+  age: 25
+CoolExample2:
+  englishName: "Syml"
+  britishName: "Syml"
+  age: 27
 ```
 
 <!-- toc -->

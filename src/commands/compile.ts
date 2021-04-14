@@ -20,9 +20,9 @@ export default class Compile extends Command {
     const { flags } = this.parse(Compile);
     const { source, target } = flags;
 
-    const syml = await FileSystemService.readYaml(source);
+    const syml = await FileSystemService.readSyml(source);
     const types = await ImportService.importAllTypes(syml);
-    const result = CompileService.compileSaml(syml, types);
+    const result = CompileService.compileSaml(syml.clientData, types);
     await FileSystemService.writeYaml(target, result);
   }
 }

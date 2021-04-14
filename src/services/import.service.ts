@@ -8,16 +8,17 @@ export class ImportService {
     root: SymlObject,
     currentPath: string = "./"
   ): Promise<ObjectOf<SymlType>> {
-    let types: ObjectOf<SymlType> = root._types || {};
+    let types: ObjectOf<SymlType> = root.types;
 
-    if (root._import) {
+    if (root.import.length) {
       await Promise.all(
-        root._import.map<Promise<void>>(async (path) => {
+        root.import.map<Promise<void>>(async (path) => {
           const resolvedPath = resolve(currentPath, path);
-          const syml = await FileSystemService.readYaml(resolvedPath);
+          const syml = await FileSystemService.readSyml(resolvedPath);
+          const startingPath = dirname(resolvedPath);
           const typesFromFiles = await ImportService.importAllTypes(
             syml,
-            dirname(resolvedPath)
+            startingPath
           );
           types = Object.assign({}, typesFromFiles, types);
         })

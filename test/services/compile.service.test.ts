@@ -1,26 +1,33 @@
 import { SymlObject } from "../../src/types/syntax";
 import { CompileService } from "../../src/services/compile.service";
+import { ObjectOf } from "../../src/types/common.types";
+import { SymlObjectBuilder } from "../../src/infra/test-utils/builders/syml-object.builder";
 
 describe("CompileService", () => {
   it("compileSaml => simple flow", async () => {
-    const clientYml: SymlObject = {
-      _types: {
+    const clientYml: SymlObject = new SymlObjectBuilder()
+      .types({
         Student: {
-          template: {
+          properties: {
             name: "$name",
             class: "Math",
           },
         },
-      },
-      "TestStudent<Student>": {
-        name: "SuperName",
-      },
-      DummyStudent: {
-        name: "DummyStudent",
-      },
-    };
+      })
+      .clientData({
+        "TestStudent<Student>": {
+          name: "SuperName",
+        },
+        DummyStudent: {
+          name: "DummyStudent",
+        },
+      })
+      .build();
 
-    const result = CompileService.compileSaml(clientYml, clientYml._types);
+    const result = CompileService.compileSaml(
+      clientYml.clientData,
+      clientYml.types
+    );
 
     expect(result).toStrictEqual({
       TestStudent: {
@@ -34,7 +41,7 @@ describe("CompileService", () => {
   });
 
   it("compileSaml => no types", async () => {
-    const clientYml: SymlObject = {
+    const clientData: ObjectOf<any> = {
       TestStudent: {
         name: "SuperName",
       },
@@ -43,15 +50,8 @@ describe("CompileService", () => {
       },
     };
 
-    const result = CompileService.compileSaml(clientYml);
+    const result = CompileService.compileSaml(clientData);
 
-    expect(result).toStrictEqual({
-      TestStudent: {
-        name: "SuperName",
-      },
-      DummyStudent: {
-        name: "DummyStudent",
-      },
-    });
+    expect(result).toStrictEqual(clientData);
   });
 });

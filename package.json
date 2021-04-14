@@ -21,6 +21,7 @@
     "@oclif/dev-cli": "^1",
     "@oclif/test": "^1",
     "@types/chai": "^4",
+    "@types/faker": "^5.5.1",
     "@types/jest": "^26.0.22",
     "@types/js-yaml": "^4.0.0",
     "@types/node": "^10",
@@ -30,6 +31,7 @@
     "chai": "^4",
     "eslint": "^7.23.0",
     "eslint-plugin-jest": "^24.3.2",
+    "faker": "^5.5.3",
     "globby": "^10",
     "jest": "^26.6.3",
     "nyc": "^14",
@@ -69,8 +71,9 @@
     "deploy": "echo TODO",
     "posttest": "yarn run eslint:test && prettier --check .",
     "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
-    "test": "jest",
-    "test:ci": "jest && yarn run posttest",
+    "test": "tsc && jest",
+    "tsc": "tsc",
+    "test:ci": "tsc && jest && yarn run posttest",
     "version": "oclif-dev readme && git add README.md"
   },
   "types": "lib/index.d.ts"
