@@ -1,9 +1,7 @@
 name: CI/Test
 on:
-  push:
-    branches:
-      - "*"
-      - "!master"
+  pull_request:
+    types: [assigned, opened, synchronize, reopened]
 jobs:
   Tests:
     runs-on: ubuntu-latest
