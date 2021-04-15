@@ -5,7 +5,7 @@ on:
       - "*"
       - "!master"
   pull_request:
-    types: [ assigned, opened, synchronize, reopened ]
+    types: [assigned, opened, synchronize, reopened]
 jobs:
   Tests:
     runs-on: ubuntu-latest
