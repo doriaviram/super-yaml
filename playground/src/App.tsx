@@ -1,27 +1,26 @@
 import React, {useEffect, useState} from "react";
 import logo from "./logo.svg";
 import "./App.scss";
-// import {compile} from "super-yaml"
 import AceEditor from "react-ace";
 import {ImArrowRight} from "react-icons/all";
-// @ts-ignore
 import {compile} from "super-yaml";
 
 import "ace-builds/src-noconflict/mode-yaml";
 import "ace-builds/src-noconflict/theme-github";
 
-const DEFAULT_VALUE = `@types:
+const DEFAULT_VALUE = `
+@types:
   MyCoolType:
     properties:
       englishName: $name (expect name parameter)
       britishName: $name
       age: $age:25 (default value)
-
 CoolExample1<MyCoolType>:
   name: SuperYaml
 CoolExample2<MyCoolType>:
   name: Syml
-  age: 27`
+  age: 27
+`
 
 function App() {
   const [yamlValue, setYamlValue] = useState<string>(DEFAULT_VALUE)
