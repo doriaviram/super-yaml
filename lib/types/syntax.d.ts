@@ -4,8 +4,8 @@ export interface SymlParam {
     defaultValue?: string;
 }
 export interface SymlSyntax {
-    "@types"?: ObjectOf<SymlType>;
-    "@import"?: string[];
+    _types?: ObjectOf<SymlType>;
+    _import?: string[];
     [key: string]: any;
 }
 export interface SymlType {
