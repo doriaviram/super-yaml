@@ -5,11 +5,11 @@ import { ObjectOf } from "../types/common.types";
 
 export class SyntaxParserService {
   private static extractImport(syml: SymlSyntax): string[] {
-    return syml["@import"] || [];
+    return syml["_import"] || [];
   }
 
   private static extractTypes(syml: SymlSyntax): ObjectOf<SymlType> {
-    return syml["@types"] || {};
+    return syml["_types"] || {};
   }
 
   private static extractClientData(syml: SymlSyntax): ObjectOf<any> {

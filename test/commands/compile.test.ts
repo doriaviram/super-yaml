@@ -6,7 +6,7 @@ import { ConsoleMock } from "../../src/infra/test-utils/mockers/console.mock";
 describe("compile", () => {
   it("compile => simple flow", async () => {
     const clientYml: SymlSyntax = {
-      "@types": {
+      _types: {
         Student: {
           properties: {
             name: "$name",
@@ -61,7 +61,7 @@ describe("compile", () => {
 
   it("compile => require types", async () => {
     const typesYml: SymlSyntax = {
-      "@types": {
+      _types: {
         Student: {
           properties: {
             name: "$name",
@@ -71,7 +71,7 @@ describe("compile", () => {
       },
     };
     const clientYml: SymlSyntax = {
-      "@import": ["./types.syml"],
+      _import: ["./types.syml"],
       "TestStudent<Student>": {
         name: "SuperName",
       },

@@ -42,8 +42,8 @@ export class SymlObjectBuilder {
 
   public buildAsClientSyntax(): SymlSyntax {
     return {
-      "@types": this.data.types,
-      "@import": this.data.import,
+      _types: this.data.types,
+      _import: this.data.import,
       ...this.data.clientData,
     };
   }

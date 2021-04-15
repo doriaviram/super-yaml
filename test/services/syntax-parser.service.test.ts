@@ -16,14 +16,14 @@ describe("SyntaxParserService", () => {
 
   it("parseSyntax => simple flow", async () => {
     const clientSyml: SymlSyntax = {
-      "@types": {
+      _types: {
         Type1: {
           properties: {
             name: "$name",
           },
         },
       },
-      "@import": ["./yml.yml"],
+      _import: ["./yml.yml"],
     };
 
     const result = await SyntaxParserService.parseSyntax(clientSyml);

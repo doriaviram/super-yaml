@@ -5,7 +5,7 @@ describe("ConfigService", () => {
     expect<Config>(ConfigService.getConfig()).toStrictEqual<Config>({
       customerYmlKeyPrefix: "<",
       customerYmlKeySuffix: ">",
-      variablePrefix: "@",
+      variablePrefix: "_",
     });
   });
 });
