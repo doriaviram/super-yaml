@@ -6,8 +6,8 @@ export interface SymlParam {
 }
 
 export interface SymlSyntax {
-  "@types"?: ObjectOf<SymlType>;
-  "@import"?: string[];
+  _types?: ObjectOf<SymlType>;
+  _import?: string[];
   [key: string]: any;
 }
 

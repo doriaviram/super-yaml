@@ -18,7 +18,7 @@ super-yaml is a tool that helps you write enhanced yaml's and compile them to re
 **In**
 
 ```yaml
-@types:
+_types:
   MyCoolType:
     properties:
       englishName: $name (expect name parameter)
@@ -52,18 +52,18 @@ CoolExample2:
 `shared.syml`
 
 ```yaml
-@types:
-   MyCoolType:
-     properties:
-       englishName: $name (expect name parameter)
-       britishName: $name
-       age: $age:25 (default value)
+_types:
+  MyCoolType:
+    properties:
+      englishName: $name (expect name parameter)
+      britishName: $name
+      age: $age:25 (default value)
 ```
 
 `config.syml`
 
 ```yaml
-@import:
+_import:
   - ./shared.syml
 
 CoolExample1<MyCoolType>:
