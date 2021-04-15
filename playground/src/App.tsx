@@ -4,6 +4,7 @@ import "./App.scss";
 // import {compile} from "super-yaml"
 import AceEditor from "react-ace";
 import {ImArrowRight} from "react-icons/all";
+// @ts-ignore
 import {compile} from "super-yaml";
 
 import "ace-builds/src-noconflict/mode-yaml";

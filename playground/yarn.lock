@@ -11262,10 +11262,9 @@ stylehacks@^4.0.0:
     postcss "^7.0.0"
     postcss-selector-parser "^3.0.0"
 
-super-yaml@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/super-yaml/-/super-yaml-1.0.3.tgz#7ec73442287283e86c2cabff70f7d46b3c596772"
-  integrity sha512-XxRANv9DyNfkC4/awnD8AcRcat+Tp9WwlglOpCeh46sANw9ILa3OlcIXSgfGwCIVf5X5aygyfXIx7xVrTkldAQ==
+"super-yaml@https://github.com/doriaviram/super-yaml#playground-version":
+  version "0.0.0-development"
+  resolved "https://github.com/doriaviram/super-yaml#c15b600aab902bce1f8647e3b92b96a026aaf5e4"
   dependencies:
     "@oclif/command" "^1"
     "@oclif/config" "^1"
