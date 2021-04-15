@@ -1,6 +1,6 @@
 {
   "name": "super-yaml",
-  "version": "0.0.0",
+  "version": "0.0.0-development",
   "author": "Dori Aviram @doriaviram",
   "bin": {
     "super-yaml": "./bin/run"
@@ -36,6 +36,7 @@
     "jest": "^26.6.3",
     "nyc": "^14",
     "prettier": "^2.2.1",
+    "semantic-release": "^17.4.2",
     "ts-node": "^8",
     "typescript": "^4.2.3"
   },
@@ -74,7 +75,8 @@
     "test": "tsc && jest",
     "tsc": "tsc",
     "test:ci": "tsc && jest && yarn run posttest",
-    "version": "oclif-dev readme && git add README.md"
+    "version": "oclif-dev readme && git add README.md",
+    "semantic-release": "semantic-release"
   },
   "types": "lib/index.d.ts"
 }
