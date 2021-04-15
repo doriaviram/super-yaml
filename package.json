@@ -37,6 +37,7 @@
     "eslint-plugin-jest": "^24.3.2",
     "faker": "^5.5.3",
     "globby": "^10",
+    "husky": "^6.0.0",
     "jest": "^26.6.3",
     "nyc": "^14",
     "prettier": "^2.2.1",
