@@ -16,8 +16,8 @@ jobs:
         working-directory: ./playground
       - run: git config user.name github-actions
       - run: git config user.email github-actions@github.com
-      - name: Publish
-        run: yarn deploy
-        working-directory: ./playground
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.1
+        with:
+          branch: gh-pages
+          folder: build
