@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import "./App.scss";
 import AceEditor from "react-ace";
-import {ImArrowRight} from "react-icons/all";
-import {compile} from "super-yaml";
+import { ImArrowRight } from "react-icons/all";
+import { compile } from "super-yaml";
 
 import "ace-builds/src-noconflict/mode-yaml";
 import "ace-builds/src-noconflict/mode-makefile";
@@ -22,61 +22,67 @@ CoolExample2<MyCoolType>:
   name: Syml
   age: 27
 
-`
+`;
 
 function App() {
-  const [yamlValue, setYamlValue] = useState<string>(DEFAULT_VALUE)
-  const [compiledYamlValue, setCompiledYamlValue] = useState<string>("Loading..")
+  const [yamlValue, setYamlValue] = useState<string>(DEFAULT_VALUE);
+  const [compiledYamlValue, setCompiledYamlValue] = useState<string>(
+    "Loading.."
+  );
 
   useEffect(() => {
     try {
-      setCompiledYamlValue(compile(yamlValue))
+      setCompiledYamlValue(compile(yamlValue));
+    } catch (e) {
+      setCompiledYamlValue(e.message);
     }
-    catch (e) {
-      setCompiledYamlValue(e.message)
-    }
-
-  }, [yamlValue])
+  }, [yamlValue]);
   return (
     <div className="App">
       <header className="App-header">
         <p>
           Super-YAML
           <p>
-            super-yaml is a tool that helps you write enhanced yaml's and compile them to regular yaml `.yml` files.
+            super-yaml is a tool that helps you write enhanced yaml's and
+            compile them to regular yaml `.yml` files.
           </p>
         </p>
-        <div style={{display: "flex", justifyContent: "space-evenly", width:"100%", alignItems: "center"}}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-evenly",
+            width: "100%",
+            alignItems: "center",
+          }}
+        >
           <div>
             Input
-          <AceEditor
-            mode="yaml"
-            theme="chrome"
-            onChange={setYamlValue}
-            name="yamlInput"
-            editorProps={{ $blockScrolling: true }}
-            value={yamlValue}
-          />
+            <AceEditor
+              mode="yaml"
+              theme="chrome"
+              onChange={setYamlValue}
+              name="yamlInput"
+              editorProps={{ $blockScrolling: true }}
+              value={yamlValue}
+            />
           </div>
           <div>
-          <ImArrowRight/>
+            <ImArrowRight />
           </div>
           <div>
             Output
-          <AceEditor
-            readOnly={true}
-            mode="yaml"
-            theme="chrome"
-            onChange={() => {}}
-            name="yamlOutput"
-            editorProps={{ $blockScrolling: true }}
-            value={compiledYamlValue}
-          />
+            <AceEditor
+              readOnly={true}
+              mode="yaml"
+              theme="chrome"
+              onChange={() => {}}
+              name="yamlOutput"
+              editorProps={{ $blockScrolling: true }}
+              value={compiledYamlValue}
+            />
           </div>
         </div>
-
       </header>
-
     </div>
   );
 }
