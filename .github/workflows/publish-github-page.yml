@@ -16,6 +16,9 @@ jobs:
         working-directory: ./playground
       - run: git config user.name github-actions
       - run: git config user.email github-actions@github.com
+      - name: Build
+        run: yarn build
+        working-directory: ./playground
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.1
         with:
