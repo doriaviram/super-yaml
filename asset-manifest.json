@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/super-yaml/static/css/main.a3c630ed.chunk.css",
+    "main.js": "/super-yaml/static/js/main.0fdffe83.chunk.js",
+    "main.js.map": "/super-yaml/static/js/main.0fdffe83.chunk.js.map",
+    "runtime-main.js": "/super-yaml/static/js/runtime-main.13637f3c.js",
+    "runtime-main.js.map": "/super-yaml/static/js/runtime-main.13637f3c.js.map",
+    "static/js/2.e616c9dc.chunk.js": "/super-yaml/static/js/2.e616c9dc.chunk.js",
+    "static/js/2.e616c9dc.chunk.js.map": "/super-yaml/static/js/2.e616c9dc.chunk.js.map",
+    "index.html": "/super-yaml/index.html",
+    "static/css/main.a3c630ed.chunk.css.map": "/super-yaml/static/css/main.a3c630ed.chunk.css.map",
+    "static/js/2.e616c9dc.chunk.js.LICENSE.txt": "/super-yaml/static/js/2.e616c9dc.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.13637f3c.js",
+    "static/js/2.e616c9dc.chunk.js",
+    "static/css/main.a3c630ed.chunk.css",
+    "static/js/main.0fdffe83.chunk.js"
+  ]
+}
