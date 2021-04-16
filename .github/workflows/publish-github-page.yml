@@ -1,4 +1,4 @@
-name: CI/Deploy
+name: CI/Publish GH Page
 on:
   push:
     branches:
@@ -12,10 +12,11 @@ jobs:
         with:
           node-version: "14"
       - name: ""
-        run: pushd playground
       - name: Install dependencies
         run: yarn
+        working-directory: ./playground
       - name: Publish
         run: yarn deploy
+        working-directory: ./playground
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

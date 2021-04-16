@@ -12,15 +12,17 @@ const DEFAULT_VALUE = `
 _types:
   MyCoolType:
     properties:
-        names:
-            englishName: $name
-            britishName: $name
-        age: $age:25 # default value
+      englishName: $name # Expect name parameter
+      geoData:
+        city: Jerusalem # Const
+        country: $country:Israel # Parameter with default value
+      hebrewName: $name # Reuse same parameter
+
 CoolExample1<MyCoolType>:
   name: SuperYaml
 CoolExample2<MyCoolType>:
   name: Syml
-  age: 27
+  country: Tel-Aviv # Is it a country ?
 
 `;
 
