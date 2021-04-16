@@ -1,4 +1,4 @@
-name: CI/Publish packageq
+name: CI/Publish package
 on:
   push:
     branches:
