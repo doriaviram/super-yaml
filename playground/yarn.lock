@@ -11264,7 +11264,7 @@ stylehacks@^4.0.0:
 
 "super-yaml@https://github.com/doriaviram/super-yaml#playground-version":
   version "0.0.0-development"
-  resolved "https://github.com/doriaviram/super-yaml#ab5524ac597e0c0fe8b59febeae155889e80de98"
+  resolved "https://github.com/doriaviram/super-yaml#4943edff7937a0f1c04608d48894ca3f1a5bb137"
   dependencies:
     "@oclif/command" "^1"
     "@oclif/config" "^1"
