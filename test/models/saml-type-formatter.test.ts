@@ -5,8 +5,8 @@ describe("SamlTypeFormatter", () => {
     const template = {
       properties: {
         someNumb: 2,
-        someString: "$name",
-        someStringWithDefault: "$status:Free",
+        someString: "$.name",
+        someStringWithDefault: "$.status:Free",
       },
     };
 
@@ -24,8 +24,8 @@ describe("SamlTypeFormatter", () => {
   it("build => multiple params with the same name", () => {
     const template = {
       properties: {
-        someString: "$name",
-        someStringWithDefault: "$name",
+        someString: "$.name",
+        someStringWithDefault: "$.name",
       },
     };
 
@@ -60,7 +60,7 @@ describe("SamlTypeFormatter", () => {
   it("build => missing parameter", () => {
     const template = {
       properties: {
-        someNumb: "$name",
+        someNumb: "$.name",
       },
     };
 
@@ -73,7 +73,7 @@ describe("SamlTypeFormatter", () => {
     const template = {
       properties: {
         someObject: {
-          someString: "$name",
+          someString: "$.name",
         },
       },
     };

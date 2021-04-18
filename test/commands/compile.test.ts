@@ -9,7 +9,7 @@ describe("compile", () => {
       _types: {
         Student: {
           properties: {
-            name: "$name",
+            name: "$.name",
             class: "Math",
           },
         },
@@ -24,6 +24,52 @@ describe("compile", () => {
     await FileSystemService.writeYaml("test.syml", clientYml);
 
     await Compile.run(["--source", "test.syml", "--target", "test.yml"]);
+
+    const result = await FileSystemService.readYaml("test.yml");
+    const consoleCalls = ConsoleMock.getInstance().getCalls();
+    expect(result).toStrictEqual({
+      TestStudent: {
+        name: "SuperName",
+        class: "Math",
+      },
+      DummyStudent: {
+        name: "DummyStudent",
+      },
+    });
+    expect(consoleCalls).toEqual([]);
+  });
+
+  it("compile => use configuration", async () => {
+    const clientYml: SymlSyntax = {
+      _types: {
+        Student: {
+          properties: {
+            name: "ZZ.name",
+            class: "Math",
+          },
+        },
+      },
+      "TestStudent%%Student$$": {
+        name: "SuperName",
+      },
+      DummyStudent: {
+        name: "DummyStudent",
+      },
+    };
+    await FileSystemService.writeYaml("test.syml", clientYml);
+
+    await Compile.run([
+      "--source",
+      "test.syml",
+      "--target",
+      "test.yml",
+      "--typeKeyPrefix",
+      "%%",
+      "--typeKeySuffix",
+      "$$",
+      "--typeVariablePrefix",
+      "ZZ.",
+    ]);
 
     const result = await FileSystemService.readYaml("test.yml");
     const consoleCalls = ConsoleMock.getInstance().getCalls();
@@ -64,7 +110,7 @@ describe("compile", () => {
       _types: {
         Student: {
           properties: {
-            name: "$name",
+            name: "$.name",
             class: "Math",
           },
         },

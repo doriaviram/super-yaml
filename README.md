@@ -23,11 +23,11 @@ Quick demo: https://doriaviram.github.io/super-yaml/
 _types:
   MyCoolType:
     properties:
-      englishName: $name # Expect name parameter
+      englishName: $.name # Expect name parameter
       geoData:
         city: Jerusalem # Const
-        country: $country:Israel # Parameter with default value
-      hebrewName: $name # Reuse same parameter
+        country: $.country:Israel # Parameter with default value
+      hebrewName: $.name # Reuse same parameter
 
 CoolExample1<MyCoolType>:
   name: SuperYaml
@@ -63,11 +63,11 @@ CoolExample2:
 _types:
   MyCoolType:
     properties:
-      englishName: $name # Expect name parameter
+      englishName: $.name # Expect name parameter
       geoData:
         city: Jerusalem # Const
-        country: $country:Israel # Parameter with default value
-      hebrewName: $name # Reuse same parameter
+        country: $.country:Israel # Parameter with default value
+      hebrewName: $.name # Reuse same parameter
 ```
 
 `config.syml`
@@ -100,19 +100,21 @@ CoolExample2:
   hebrewName: Syml
 ```
 
-<!-- toc -->
+### Config
 
-- [super-yaml](#super-yaml)
-- [Requirements](#requirements)
-- [Usage](#usage)
-- [Commands](#commands)
-<!-- tocstop -->
+All options, which are set _Available in global config?_ from `ToastOptions` are supported. Below are extra configurable options:
 
-# Requirements
+| Name                 | Type     | Default | Description                                                |
+| -------------------- | -------- | ------- | ---------------------------------------------------------- |
+| `typeKeyPrefix`      | `string` | `<`     | Set the prefix for type declaration `Example1<MyCoolType>` |
+| `typeKeySuffix`      | `string` | `>`     | Set the suffix for type declaration `Example1<MyCoolType>` |
+| `typeVariablePrefix` | `string` | `$.`    | Set the prefix for variable `$.myParam`                    |
+
+### Requirements
 
 `nodejs >= 12`
 
-# Usage
+### Usage
 
 <!-- usage -->
 
@@ -121,7 +123,7 @@ $ npm install -g super-yaml
 $ super-yaml COMMAND
 running command...
 $ super-yaml (-v|--version|version)
-super-yaml/0.0.0 darwin-x64 node-v12.9.1
+super-yaml/0.0.0-development darwin-x64 node-v12.9.1
 $ super-yaml --help [COMMAND]
 USAGE
   $ super-yaml COMMAND
@@ -130,7 +132,7 @@ USAGE
 
 <!-- usagestop -->
 
-# Commands
+### Commands
 
 <!-- commands -->
 
@@ -146,15 +148,18 @@ USAGE
   $ super-yaml compile
 
 OPTIONS
-  -s, --source=source  (required)
-  -t, --target=target  (required)
+  -s, --source=source                      (required)
+  -t, --target=target                      (required)
+  --typeKeyPrefix=typeKeyPrefix
+  --typeKeySuffix=typeKeySuffix
+  --typeVariablePrefix=typeVariablePrefix
 
 EXAMPLES
   $ super-yaml compile -s config.syml -t config.yml
   $ super-yaml compile --source config.syml --target config.yml
 ```
 
-_See code: [src/commands/compile.ts](https://github.com/doriaviram/super-yaml/blob/v0.0.0/src/commands/compile.ts)_
+_See code: [src/commands/compile.ts](https://github.com/doriaviram/super-yaml/blob/v0.0.0-development/src/commands/compile.ts)_
 
 ## `super-yaml help [COMMAND]`
 

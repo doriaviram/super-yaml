@@ -1,26 +1,36 @@
 export interface Config {
-  customerYmlKeyPrefix: string;
-  customerYmlKeySuffix: string;
+  typeKeyPrefix: string;
+  typeKeySuffix: string;
   variablePrefix: string;
+  typeVariablePrefix: string;
 }
 
 export interface ClientConfig {
-  customerYmlKeyPrefix?: string;
-  customerYmlKeySuffix?: string;
+  typeKeyPrefix?: string;
+  typeKeySuffix?: string;
   variablePrefix?: string;
+  typeVariablePrefix?: string;
 }
 
 const DEFAULT_CONFIG: Config = {
-  customerYmlKeyPrefix: "<",
+  typeKeyPrefix: "<",
   variablePrefix: "_",
-  customerYmlKeySuffix: ">",
+  typeVariablePrefix: "$.",
+  typeKeySuffix: ">",
 };
 
 export class ConfigService {
   private static globalConfig: Config = DEFAULT_CONFIG;
 
+  public static resetConfig(): void {
+    ConfigService.globalConfig = DEFAULT_CONFIG;
+  }
+
   public static initConfig(clientConfig: ClientConfig = {}): void {
-    ConfigService.globalConfig = { ...DEFAULT_CONFIG, ...clientConfig };
+    ConfigService.globalConfig = {
+      ...ConfigService.globalConfig,
+      ...clientConfig,
+    };
   }
 
   public static getConfig(): Config {

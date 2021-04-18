@@ -1,5 +1,5 @@
 {
-  "version": "0.0.0",
+  "version": "0.0.0-development",
   "commands": {
     "compile": {
       "id": "compile",
@@ -23,7 +23,10 @@
           "type": "option",
           "char": "t",
           "required": true
-        }
+        },
+        "typeKeyPrefix": { "name": "typeKeyPrefix", "type": "option" },
+        "typeKeySuffix": { "name": "typeKeySuffix", "type": "option" },
+        "typeVariablePrefix": { "name": "typeVariablePrefix", "type": "option" }
       },
       "args": []
     }

@@ -9,7 +9,7 @@ describe("CompileService", () => {
       .types({
         Student: {
           properties: {
-            name: "$name",
+            name: "$.name",
             class: "Math",
           },
         },

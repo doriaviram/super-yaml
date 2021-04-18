@@ -4,7 +4,7 @@ import { ConfigService } from "../../src/services/config.service";
 
 describe("syntax.utils", () => {
   it("parseParam => param", () => {
-    expect(parseParam("$name")).toStrictEqual({
+    expect(parseParam("$.name")).toStrictEqual({
       key: "name",
       defaultValue: undefined,
     });
@@ -15,9 +15,17 @@ describe("syntax.utils", () => {
   });
 
   it("parseParam => param with default value", () => {
-    expect(parseParam("$name:2")).toStrictEqual({
+    expect(parseParam("$.name:2")).toStrictEqual({
       key: "name",
       defaultValue: "2",
+    });
+  });
+
+  it("parseParam => custom config", () => {
+    ConfigService.initConfig({ typeVariablePrefix: "@@" });
+    expect(parseParam("@@name")).toStrictEqual({
+      key: "name",
+      defaultValue: undefined,
     });
   });
 
@@ -36,8 +44,8 @@ describe("syntax.utils", () => {
 
   it("extractTypeName => custom config", () => {
     ConfigService.initConfig({
-      customerYmlKeyPrefix: "$$",
-      customerYmlKeySuffix: "%%",
+      typeKeyPrefix: "$$",
+      typeKeySuffix: "%%",
     });
     expect<ClientYmlKey>(extractTypeName("SomeKey$$SuperType%%")).toStrictEqual(
       {
@@ -49,8 +57,8 @@ describe("syntax.utils", () => {
 
   it("extractTypeName => custom config => same string", () => {
     ConfigService.initConfig({
-      customerYmlKeyPrefix: "$$",
-      customerYmlKeySuffix: "$$",
+      typeKeyPrefix: "$$",
+      typeKeySuffix: "$$",
     });
     expect<ClientYmlKey>(extractTypeName("SomeKey$$SuperType$$")).toStrictEqual(
       {

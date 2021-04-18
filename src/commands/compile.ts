@@ -2,6 +2,7 @@ import { Command, flags } from "@oclif/command";
 import { FileSystemService } from "../services/file-system.service";
 import { CompileService } from "../services/compile.service";
 import { ImportService } from "../services/import.service";
+import { ConfigService } from "../services/config.service";
 
 export default class Compile extends Command {
   static description = "Compile syml to simple yml";
@@ -14,11 +15,25 @@ export default class Compile extends Command {
   static flags = {
     source: flags.string({ char: "s", required: true }),
     target: flags.string({ char: "t", required: true }),
+    typeKeyPrefix: flags.string({}),
+    typeKeySuffix: flags.string({}),
+    typeVariablePrefix: flags.string({}),
   };
 
   async run() {
     const { flags } = this.parse(Compile);
     const { source, target } = flags;
+
+    if (flags.typeKeyPrefix)
+      ConfigService.initConfig({ typeKeyPrefix: flags.typeKeyPrefix });
+
+    if (flags.typeKeySuffix)
+      ConfigService.initConfig({ typeKeySuffix: flags.typeKeySuffix });
+
+    if (flags.typeVariablePrefix)
+      ConfigService.initConfig({
+        typeVariablePrefix: flags.typeVariablePrefix,
+      });
 
     const syml = await FileSystemService.readSyml(source);
     const types = await ImportService.importAllTypes(syml);

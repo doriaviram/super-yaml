@@ -5,5 +5,5 @@ import { ConfigService } from "../../services/config.service";
 beforeEach(() => {
   ConsoleMock.getInstance().applyMock();
   FsMock.getInstance().applyMock();
-  ConfigService.initConfig();
+  ConfigService.resetConfig();
 });
