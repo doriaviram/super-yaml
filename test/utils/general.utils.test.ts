@@ -65,4 +65,21 @@ describe("general.utils", () => {
       e: { zzz: "f", g: [{ zzz: "h" }, { zzz: "h1" }] },
     });
   });
+
+  it("mapKeysDeep => list of strings", () => {
+    const obj = { a: "b", c: "d", e: { c: "f", g: ["h123", "h123"] } };
+
+    const result = mapKeysDeep(obj, (value: any, key: any) => {
+      if (key === "c") {
+        return "zzz";
+      }
+      return key;
+    });
+
+    expect(result).toEqual({
+      a: "b",
+      zzz: "d",
+      e: { zzz: "f", g: ["h123", "h123"] },
+    });
+  });
 });
