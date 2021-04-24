@@ -1,4 +1,4 @@
-import { mapValues, mapKeys, isObject } from "lodash";
+import { forOwn, isPlainObject } from "lodash";
 import { ObjectOf } from "../types/common.types";
 
 export const noop = () => {};
@@ -13,7 +13,13 @@ type mapKeysDeepReplacer = (value: any, key: string) => string;
 export const mapKeysDeep = (
   obj: ObjectOf<any>,
   replacer: mapKeysDeepReplacer
-): ObjectOf<any> =>
-  mapValues(mapKeys(obj, replacer), (val) =>
-    isObject(val) ? mapKeysDeep(val, replacer) : val
-  );
+): ObjectOf<any> => {
+  let retValue: any = {};
+  forOwn(obj, (value, key) => {
+    if (Array.isArray(value))
+      value = value.map((v) => mapKeysDeep(v, replacer));
+    if (isPlainObject(value)) value = mapKeysDeep(value, replacer);
+    retValue[replacer(value, key)] = value;
+  });
+  return retValue;
+};

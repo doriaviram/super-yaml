@@ -48,4 +48,21 @@ describe("general.utils", () => {
       e: { zzz: "f", g: { zzz: "h" } },
     });
   });
+
+  it("mapKeysDeep => object inside list", () => {
+    const obj = { a: "b", c: "d", e: { c: "f", g: [{ c: "h" }, { c: "h1" }] } };
+
+    const result = mapKeysDeep(obj, (value: any, key: any) => {
+      if (key === "c") {
+        return "zzz";
+      }
+      return key;
+    });
+
+    expect(result).toEqual({
+      a: "b",
+      zzz: "d",
+      e: { zzz: "f", g: [{ zzz: "h" }, { zzz: "h1" }] },
+    });
+  });
 });
