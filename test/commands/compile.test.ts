@@ -39,6 +39,41 @@ describe("compile", () => {
     expect(consoleCalls).toEqual([]);
   });
 
+  it("compile => handle complex schema", async () => {
+    const clientYml: SymlSyntax = {
+      _types: {
+        Student: {
+          properties: {
+            name: "$.name",
+            class: "Math",
+          },
+        },
+      },
+      "TestStudent<Student>": {
+        name: "SuperName",
+      },
+      package: {
+        include: ["../../src/**/**"],
+      },
+    };
+    await FileSystemService.writeYaml("test.syml", clientYml);
+
+    await Compile.run(["--source", "test.syml", "--target", "test.yml"]);
+
+    const result = await FileSystemService.readYaml("test.yml");
+    const consoleCalls = ConsoleMock.getInstance().getCalls();
+    expect(result).toStrictEqual({
+      TestStudent: {
+        name: "SuperName",
+        class: "Math",
+      },
+      package: {
+        include: ["../../src/**/**"],
+      },
+    });
+    expect(consoleCalls).toEqual([]);
+  });
+
   it("compile => use configuration", async () => {
     const clientYml: SymlSyntax = {
       _types: {
