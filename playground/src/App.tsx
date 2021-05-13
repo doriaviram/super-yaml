@@ -28,9 +28,8 @@ CoolExample2<MyCoolType>:
 
 function App() {
   const [yamlValue, setYamlValue] = useState<string>(DEFAULT_VALUE);
-  const [compiledYamlValue, setCompiledYamlValue] = useState<string>(
-    "Loading.."
-  );
+  const [compiledYamlValue, setCompiledYamlValue] =
+    useState<string>("Loading..");
 
   useEffect(() => {
     try {
