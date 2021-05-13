@@ -15,6 +15,7 @@ export const mapKeysDeep = (
   replacer: mapKeysDeepReplacer
 ): ObjectOf<any> => {
   if (isNative(obj)) return obj;
+  if (Array.isArray(obj)) return obj.map((v) => mapKeysDeep(v, replacer));
   let retValue: any = {};
   forOwn(obj, (value, key) => {
     if (Array.isArray(value))
