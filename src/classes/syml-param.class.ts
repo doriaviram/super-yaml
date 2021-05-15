@@ -5,7 +5,7 @@ import {
   mapKeysDeep,
 } from "../utils/general.utils";
 import { ObjectOf } from "../types/common.types";
-const format = require('string-format')
+const format = require("string-format");
 
 interface SymlParamConstructor {
   template: string;
