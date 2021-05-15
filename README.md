@@ -100,7 +100,7 @@ CoolExample2:
   hebrewName: Syml
 ```
 
-### Template literals
+### String templates
 
 **In**
 
@@ -108,7 +108,8 @@ CoolExample2:
 _types:
   MyCoolType:
     properties:
-      englishName: `Mr. $.name`
+      englishName: Mr. $.name
+      welcomeMessage: Mr. $.{name}, Hello
 CoolExample1<MyCoolType>:
   name: SuperYaml
 ```
@@ -117,7 +118,8 @@ CoolExample1<MyCoolType>:
 
 ```yaml
 CoolExample1:
-  englishName: Mr. sSuperYaml
+  englishName: Mr. SuperYaml
+  welcomeMessage: Mr. SuperYaml, Hello
 ```
 
 ### Config
