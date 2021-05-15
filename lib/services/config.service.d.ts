@@ -1,15 +1,18 @@
 export interface Config {
-    customerYmlKeyPrefix: string;
-    customerYmlKeySuffix: string;
+    typeKeyPrefix: string;
+    typeKeySuffix: string;
     variablePrefix: string;
+    typeVariablePrefix: string;
 }
 export interface ClientConfig {
-    customerYmlKeyPrefix?: string;
-    customerYmlKeySuffix?: string;
+    typeKeyPrefix?: string;
+    typeKeySuffix?: string;
     variablePrefix?: string;
+    typeVariablePrefix?: string;
 }
 export declare class ConfigService {
     private static globalConfig;
+    static resetConfig(): void;
     static initConfig(clientConfig?: ClientConfig): void;
     static getConfig(): Config;
 }

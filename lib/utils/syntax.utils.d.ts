@@ -1,3 +1,2 @@
-import { ClientYmlKey, SymlParam } from "../types/syntax";
-export declare const parseParam: (param: any) => SymlParam | undefined;
+import { ClientYmlKey } from "../types/syntax";
 export declare const extractTypeName: (clientYmlKey: string) => ClientYmlKey;
