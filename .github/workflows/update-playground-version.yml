@@ -18,7 +18,9 @@ jobs:
       - uses: actions/checkout@playground-version
       - name: Build
         run: yarn prepack
-      - name: Commit & Push changes
-        uses: actions-js/push
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Commit & Push
+        run: |
+          git config --global user.name 'Playground bot 🤖'
+          git config --global user.email 'playground@doriaviram.com'
+          git commit -am "Update playground version 🤖"
+          git push
