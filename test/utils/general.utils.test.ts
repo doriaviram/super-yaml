@@ -1,4 +1,6 @@
 import {
+  allIndexesOf,
+  indexOfOrLength,
   isNative,
   isString,
   mapKeysDeep,
@@ -102,5 +104,37 @@ describe("general.utils", () => {
       zzz: "d",
       e: { zzz: "f", g: [["h123", "h123"], "h123"] },
     });
+  });
+
+  it("allIndexesOf => simple flow", () => {
+    const s = "babbbabbbc";
+
+    const result = allIndexesOf(s, "a");
+
+    expect<number[]>(result).toEqual([1, 5]);
+  });
+
+  it("allIndexesOf => not found", () => {
+    const s = "babbbabbbc";
+
+    const result = allIndexesOf(s, "not-found");
+
+    expect<number[]>(result).toEqual([]);
+  });
+
+  it("indexOfOrLength => simple flow", () => {
+    const s = "ba$bbabbbc";
+
+    const result = indexOfOrLength(s, "$");
+
+    expect<number>(result).toEqual(2);
+  });
+
+  it("indexOfOrLength => not found", () => {
+    const s = "bacbbabbbc";
+
+    const result = indexOfOrLength(s, "$");
+
+    expect<number>(result).toEqual(s.length);
   });
 });

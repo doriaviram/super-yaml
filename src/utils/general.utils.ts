@@ -25,3 +25,21 @@ export const mapKeysDeep = (
   });
   return retValue;
 };
+
+export const allIndexesOf = (s: string, val: string): number[] => {
+  let indexes = [],
+    i = -1;
+  while ((i = s.indexOf(val, i + 1)) != -1) {
+    indexes.push(i);
+  }
+  return indexes;
+};
+
+export const indexOfOrLength = (
+  base: string,
+  searchString: string,
+  position: number = 0
+): number => {
+  const indexOf = base.indexOf(searchString, position);
+  return indexOf !== -1 ? indexOf : base.length;
+};
