@@ -1,20 +1,5 @@
-import { ClientYmlKey, SymlParam } from "../types/syntax";
-import { isString } from "./general.utils";
+import { ClientYmlKey } from "../types/syntax";
 import { ConfigService } from "../services/config.service";
-
-export const parseParam = (param: any): SymlParam | undefined => {
-  const { typeVariablePrefix } = ConfigService.getConfig();
-  if (isString(param) && param.startsWith(typeVariablePrefix)) {
-    const [key, defaultValue] = param
-      .substring(typeVariablePrefix.length)
-      .split(":");
-    return {
-      key,
-      defaultValue,
-    };
-  }
-  return undefined;
-};
 
 export const extractTypeName = (clientYmlKey: string): ClientYmlKey => {
   const { typeKeyPrefix, typeKeySuffix } = ConfigService.getConfig();

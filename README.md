@@ -53,7 +53,7 @@ CoolExample2:
   hebrewName: Syml
 ```
 
-## DRY - Imports
+### DRY - Imports
 
 **In**
 
@@ -98,6 +98,26 @@ CoolExample2:
     city: Jerusalem
     country: Tel-Aviv
   hebrewName: Syml
+```
+
+### Template literals
+
+**In**
+
+```yaml
+_types:
+  MyCoolType:
+    properties:
+      englishName: `Mr. $.name`
+CoolExample1<MyCoolType>:
+  name: SuperYaml
+```
+
+**Out**
+
+```yaml
+CoolExample1:
+  englishName: Mr. sSuperYaml
 ```
 
 ### Config
