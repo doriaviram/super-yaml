@@ -15,7 +15,9 @@ jobs:
         run: yarn
       - name: Run tests
         run: yarn run test:ci
-      - uses: actions/checkout@playground-version
+      - uses: actions/checkout@v2
+        with:
+          ref: playground-version
       - name: Build
         run: yarn prepack
       - name: Commit & Push
