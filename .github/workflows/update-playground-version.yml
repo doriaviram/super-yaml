@@ -18,6 +18,8 @@ jobs:
       - uses: actions/checkout@v2
         with:
           ref: playground-version
+      - name: Install dependencies
+        run: yarn
       - name: Build
         run: yarn prepack
       - name: Commit & Push
