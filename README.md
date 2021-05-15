@@ -11,6 +11,8 @@
 
 super-yaml is a tool that helps you write enhanced yaml's and compile them to regular yaml `.yml` files.
 
+Quick demo: https://doriaviram.github.io/super-yaml/
+
 ## Features
 
 ### Common types
@@ -21,31 +23,37 @@ super-yaml is a tool that helps you write enhanced yaml's and compile them to re
 _types:
   MyCoolType:
     properties:
-      englishName: $name (expect name parameter)
-      britishName: $name
-      age: $age:25 (default value)
+      englishName: $.name # Expect name parameter
+      geoData:
+        city: Jerusalem # Const
+        country: $.country:Israel # Parameter with default value
+      hebrewName: $.name # Reuse same parameter
 
 CoolExample1<MyCoolType>:
   name: SuperYaml
 CoolExample2<MyCoolType>:
   name: Syml
-  age: 27
+  country: Tel-Aviv # Is it a country ?
 ```
 
 **Out**
 
 ```yaml
 CoolExample1:
-  englishName: "SuperYaml"
-  britishName: "SuperYaml"
-  age: 25
+  englishName: SuperYaml
+  geoData:
+    city: Jerusalem
+    country: Israel
+  hebrewName: SuperYaml
 CoolExample2:
-  englishName: "Syml"
-  britishName: "Syml"
-  age: 27
+  englishName: Syml
+  geoData:
+    city: Jerusalem
+    country: Tel-Aviv
+  hebrewName: Syml
 ```
 
-## DRY - Imports
+### DRY - Imports
 
 **In**
 
@@ -55,9 +63,11 @@ CoolExample2:
 _types:
   MyCoolType:
     properties:
-      englishName: $name (expect name parameter)
-      britishName: $name
-      age: $age:25 (default value)
+      englishName: $.name # Expect name parameter
+      geoData:
+        city: Jerusalem # Const
+        country: $.country:Israel # Parameter with default value
+      hebrewName: $.name # Reuse same parameter
 ```
 
 `config.syml`
@@ -70,35 +80,63 @@ CoolExample1<MyCoolType>:
   name: SuperYaml
 CoolExample2<MyCoolType>:
   name: Syml
-  age: 27
+  country: Tel-Aviv # Is it a country ?
 ```
 
 **Out**
 
 ```yaml
 CoolExample1:
-  englishName: "SuperYaml"
-  britishName: "SuperYaml"
-  age: 25
+  englishName: SuperYaml
+  geoData:
+    city: Jerusalem
+    country: Israel
+  hebrewName: SuperYaml
 CoolExample2:
-  englishName: "Syml"
-  britishName: "Syml"
-  age: 27
+  englishName: Syml
+  geoData:
+    city: Jerusalem
+    country: Tel-Aviv
+  hebrewName: Syml
 ```
 
-<!-- toc -->
+### String templates
 
-- [super-yaml](#super-yaml)
-- [Requirements](#requirements)
-- [Usage](#usage)
-- [Commands](#commands)
-<!-- tocstop -->
+**In**
 
-# Requirements
+```yaml
+_types:
+  MyCoolType:
+    properties:
+      englishName: Mr. $.name
+      welcomeMessage: Mr. $.{name}, Hello
+CoolExample1<MyCoolType>:
+  name: SuperYaml
+```
+
+**Out**
+
+```yaml
+CoolExample1:
+  englishName: Mr. SuperYaml
+  welcomeMessage: Mr. SuperYaml, Hello
+```
+
+### Config
+
+All options, which are set _Available in global config?_ from `ToastOptions` are supported. Below are extra configurable options:
+
+| Name                 | Type     | Default | Description                                                |
+| -------------------- | -------- | ------- | ---------------------------------------------------------- |
+| `typeKeyPrefix`      | `string` | `<`     | Set the prefix for type declaration `Example1<MyCoolType>` |
+| `typeKeySuffix`      | `string` | `>`     | Set the suffix for type declaration `Example1<MyCoolType>` |
+| `typeVariablePrefix` | `string` | `$.`    | Set the prefix for variable `$.myParam`                    |
+
+### Requirements
 
 `nodejs >= 12`
 
-# Usage
+### Usage
 
 <!-- usage -->
 
@@ -107,7 +145,7 @@ $ npm install -g super-yaml
 $ super-yaml COMMAND
 running command...
 $ super-yaml (-v|--version|version)
-super-yaml/0.0.0 darwin-x64 node-v12.9.1
+super-yaml/0.0.0-development darwin-x64 node-v12.9.1
 $ super-yaml --help [COMMAND]
 USAGE
   $ super-yaml COMMAND
@@ -116,7 +154,7 @@ USAGE
 
 <!-- usagestop -->
 
-# Commands
+### Commands
 
 <!-- commands -->
 
@@ -132,15 +170,18 @@ USAGE
   $ super-yaml compile
 
 OPTIONS
-  -s, --source=source  (required)
-  -t, --target=target  (required)
+  -s, --source=source                      (required)
+  -t, --target=target                      (required)
+  --typeKeyPrefix=typeKeyPrefix
+  --typeKeySuffix=typeKeySuffix
+  --typeVariablePrefix=typeVariablePrefix
 
 EXAMPLES
   $ super-yaml compile -s config.syml -t config.yml
   $ super-yaml compile --source config.syml --target config.yml
 ```
 
-_See code: [src/commands/compile.ts](https://github.com/doriaviram/super-yaml/blob/v0.0.0/src/commands/compile.ts)_
+_See code: [src/commands/compile.ts](https://github.com/doriaviram/super-yaml/blob/v0.0.0-development/src/commands/compile.ts)_
 
 ## `super-yaml help [COMMAND]`
 

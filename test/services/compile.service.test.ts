@@ -9,7 +9,7 @@ describe("CompileService", () => {
       .types({
         Student: {
           properties: {
-            name: "$name",
+            name: "$.name",
             class: "Math",
           },
         },
@@ -48,6 +48,23 @@ describe("CompileService", () => {
       DummyStudent: {
         name: "DummyStudent",
       },
+    };
+
+    const result = CompileService.compileSaml(clientData);
+
+    expect(result).toStrictEqual(clientData);
+  });
+
+  it("compileSaml => object inside list (no types)", async () => {
+    const clientData: ObjectOf<any> = {
+      TestStudents: [
+        {
+          name: "SuperName1",
+        },
+        {
+          name: "SuperName2",
+        },
+      ],
     };
 
     const result = CompileService.compileSaml(clientData);
