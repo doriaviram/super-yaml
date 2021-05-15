@@ -1,4 +1,4 @@
-name: CI/Publish package
+name: CI/Update playground package
 on:
   push:
     branches:
@@ -19,6 +19,6 @@ jobs:
       - name: Build
         run: yarn prepack
       - name: Commit & Push changes
-        uses: actions-js/push@playground-version
+        uses: actions-js/push
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
