@@ -144,7 +144,7 @@ $ npm install -g super-yaml
 $ super-yaml COMMAND
 running command...
 $ super-yaml (-v|--version|version)
-super-yaml/0.0.0-development linux-x64 node-v14.16.1
+super-yaml/0.0.0-development darwin-x64 node-v12.9.1
 $ super-yaml --help [COMMAND]
 USAGE
   $ super-yaml COMMAND
