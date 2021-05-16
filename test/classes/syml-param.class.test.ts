@@ -76,4 +76,14 @@ describe("SymlParam", () => {
 
     expect(result).toStrictEqual("Mr. SuperName, Welcome");
   });
+
+  it("build => string templates with unrelated brackets", () => {
+    const symlParam = SymlParam.generateFromString(
+      "${title}. $.{name}, Welcome"
+    );
+
+    const result = symlParam!.build({ name: "SuperName" });
+
+    expect(result).toStrictEqual("${title}. SuperName, Welcome");
+  });
 });
