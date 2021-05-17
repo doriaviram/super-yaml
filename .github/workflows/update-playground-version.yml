@@ -27,5 +27,6 @@ jobs:
           git config --global user.name 'Playground bot 🤖'
           git config --global user.email 'playground@doriaviram.com'
           git merge origin/master --allow-unrelated-histories --strategy-option theirs
+          git add .
           git commit -am "Update playground version 🤖" --no-verify
           git push
