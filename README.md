@@ -139,6 +139,7 @@ All options, which are set _Available in global config?_ from `ToastOptions` are
 ### Usage
 
 <!-- usage -->
+
 ```sh-session
 $ npm install -g super-yaml
 $ super-yaml COMMAND
@@ -150,13 +151,15 @@ USAGE
   $ super-yaml COMMAND
 ...
 ```
+
 <!-- usagestop -->
 
 ### Commands
 
 <!-- commands -->
-* [`super-yaml compile`](#super-yaml-compile)
-* [`super-yaml help [COMMAND]`](#super-yaml-help-command)
+
+- [`super-yaml compile`](#super-yaml-compile)
+- [`super-yaml help [COMMAND]`](#super-yaml-help-command)
 
 ## `super-yaml compile`
 
@@ -196,4 +199,5 @@ OPTIONS
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.2/src/commands/help.ts)_
+
 <!-- commandsstop -->
