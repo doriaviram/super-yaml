@@ -4,7 +4,6 @@ about: Create a report to help us improve
 title: "[BUG]"
 labels: bug
 assignees: doriaviram
-
 ---
 
 **Describe the bug**
@@ -17,9 +16,10 @@ Steps to reproduce the behavior, if possible share the input `.syml` file
 A clear and concise description of what you expected to happen.
 
 **Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Node Version [e.g. 22]
- - super-yaml Version [e.g. 22]
+
+- OS: [e.g. iOS]
+- Node Version [e.g. 22]
+- super-yaml Version [e.g. 22]
 
 **Additional context**
 Add any other context about the problem here.
