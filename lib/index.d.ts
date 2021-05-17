@@ -1,1 +1,1 @@
-export declare const compile: (yml: string) => string;
+export { run } from "@oclif/command";
