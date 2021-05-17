@@ -21,11 +21,12 @@ jobs:
       - name: Install dependencies
         run: yarn
       - name: Build
-        run: yarn prepack
+        run: yarn build
       - name: Commit & Push
         run: |
           git config --global user.name 'Playground bot 🤖'
           git config --global user.email 'playground@doriaviram.com'
-          git merge origin/master --allow-unrelated-histories
-          git commit -am "Update playground version 🤖"
+          git merge origin/master --allow-unrelated-histories --strategy-option theirs
+          git add .
+          git commit -am "Update playground version 🤖" --no-verify
           git push

@@ -1,12 +1,8 @@
 import { ConfigService } from "../services/config.service";
-import {
-  allIndexesOf,
-  indexOfOrLength,
-  mapKeysDeep,
-} from "../utils/general.utils";
+import { allIndexesOf, indexOfOrLength } from "../utils/general.utils";
 import { ObjectOf } from "../types/common.types";
-import { create } from "string-format";
-const format = create({});
+
+const format = require("string-kit").format;
 
 interface SymlParamConstructor {
   template: string;
@@ -27,24 +23,18 @@ export class SymlParam {
     this.keys = keys;
   }
 
-  private static escapeKey(key: string): string {
-    return `__${key}`;
-  }
-
   build(userObject: ObjectOf<any>): string {
-    this.keys.forEach((key) => {
-      if (!userObject[key.key]) {
-        if (key.defaultValue) {
-          userObject[key.key] = key.defaultValue;
-        } else {
-          throw new Error(`Missing '${key.key}' property`);
-        }
-      }
+    const args = this.keys.map((value) => {
+      return {
+        key: value.key,
+        value: userObject[value.key] || value.defaultValue,
+      };
     });
-    const args = mapKeysDeep(userObject, (value, key) =>
-      SymlParam.escapeKey(key)
-    );
-    return format(this.template, args);
+    const missingParam = args.find((arg) => arg.value === undefined);
+    if (missingParam) {
+      throw new Error(`Missing '${missingParam.key}' property`);
+    }
+    return format(this.template, ...args.map(({ value }) => value));
   }
 
   private static extractParamsFromString(s: string): string[] {
@@ -73,7 +63,7 @@ export class SymlParam {
         .replace("{", "")
         .replace("}", "")
         .split(":");
-      template = template.replace(parameter, `{${SymlParam.escapeKey(key)}}`);
+      template = template.replace(parameter, `%s`);
       keys.push({ key, defaultValue });
     });
 
