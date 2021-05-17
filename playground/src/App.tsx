@@ -9,20 +9,24 @@ import "ace-builds/src-noconflict/mode-makefile";
 import "ace-builds/src-noconflict/theme-chrome";
 
 const DEFAULT_VALUE = `
+_import:
+ - ../common-types.syml
+
 _types:
   MyCoolType:
     properties:
-      englishName: $name # Expect name parameter
+      englishName: $.name
       geoData:
-        city: Jerusalem # Const
-        country: $country:Israel # Parameter with default value
-      hebrewName: $name # Reuse same parameter
+        city: Jerusalem
+        country: $.country:Israel
+      welcomeMessage: Welcome $.{name}, Hello
 
 CoolExample1<MyCoolType>:
   name: SuperYaml
 CoolExample2<MyCoolType>:
   name: Syml
-  country: Tel-Aviv # Is it a country ?
+  country: Tel-Aviv
+
 
 `;
 
@@ -65,6 +69,7 @@ function App() {
               name="yamlInput"
               editorProps={{ $blockScrolling: true }}
               value={yamlValue}
+              width="650px"
             />
           </div>
           <div>
@@ -80,6 +85,7 @@ function App() {
               name="yamlOutput"
               editorProps={{ $blockScrolling: true }}
               value={compiledYamlValue}
+              width="650px"
             />
           </div>
         </div>
