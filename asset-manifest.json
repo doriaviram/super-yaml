@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/super-yaml/static/css/main.a3c630ed.chunk.css",
-    "main.js": "/super-yaml/static/js/main.b2ceea4d.chunk.js",
-    "main.js.map": "/super-yaml/static/js/main.b2ceea4d.chunk.js.map",
+    "main.js": "/super-yaml/static/js/main.27a709ad.chunk.js",
+    "main.js.map": "/super-yaml/static/js/main.27a709ad.chunk.js.map",
     "runtime-main.js": "/super-yaml/static/js/runtime-main.13637f3c.js",
     "runtime-main.js.map": "/super-yaml/static/js/runtime-main.13637f3c.js.map",
-    "static/js/2.2c418f25.chunk.js": "/super-yaml/static/js/2.2c418f25.chunk.js",
-    "static/js/2.2c418f25.chunk.js.map": "/super-yaml/static/js/2.2c418f25.chunk.js.map",
+    "static/js/2.86127a97.chunk.js": "/super-yaml/static/js/2.86127a97.chunk.js",
+    "static/js/2.86127a97.chunk.js.map": "/super-yaml/static/js/2.86127a97.chunk.js.map",
     "index.html": "/super-yaml/index.html",
     "static/css/main.a3c630ed.chunk.css.map": "/super-yaml/static/css/main.a3c630ed.chunk.css.map",
-    "static/js/2.2c418f25.chunk.js.LICENSE.txt": "/super-yaml/static/js/2.2c418f25.chunk.js.LICENSE.txt"
+    "static/js/2.86127a97.chunk.js.LICENSE.txt": "/super-yaml/static/js/2.86127a97.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.13637f3c.js",
-    "static/js/2.2c418f25.chunk.js",
+    "static/js/2.86127a97.chunk.js",
     "static/css/main.a3c630ed.chunk.css",
-    "static/js/main.b2ceea4d.chunk.js"
+    "static/js/main.27a709ad.chunk.js"
   ]
 }
