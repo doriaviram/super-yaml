@@ -3,7 +3,7 @@ import { ObjectOf } from "../types/common.types";
 import { cloneDeepWith } from "lodash";
 import { isString, mapKeysDeep } from "../utils/general.utils";
 import { extractTypeName } from "../utils/syntax.utils";
-import { SamlTypeFormatter } from "../models/saml-type-formatter";
+import { TypePropertiesFillerService } from "./type-properties-filler.service";
 
 export class CompileService {
   public static compileSaml(
@@ -14,7 +14,7 @@ export class CompileService {
       if (isString(key)) {
         const extractedTypeName = extractTypeName(key);
         if (extractedTypeName.type)
-          return SamlTypeFormatter.formatTemplate(
+          return TypePropertiesFillerService.build(
             types[extractedTypeName.type],
             value
           );

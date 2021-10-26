@@ -3,6 +3,7 @@ export interface Config {
   typeKeySuffix: string;
   variablePrefix: string;
   typeVariablePrefix: string;
+  typeVariableSuffix: string;
 }
 
 export interface ClientConfig {
@@ -10,12 +11,14 @@ export interface ClientConfig {
   typeKeySuffix?: string;
   variablePrefix?: string;
   typeVariablePrefix?: string;
+  typeVariableSuffix?: string;
 }
 
 const DEFAULT_CONFIG: Config = {
   typeKeyPrefix: "<",
   variablePrefix: "_",
-  typeVariablePrefix: "$.",
+  typeVariablePrefix: "<%",
+  typeVariableSuffix: "%>",
   typeKeySuffix: ">",
 };
 

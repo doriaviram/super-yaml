@@ -4,7 +4,8 @@ const expectedConfig: Config = {
   typeKeyPrefix: "<",
   typeKeySuffix: ">",
   variablePrefix: "_",
-  typeVariablePrefix: "$.",
+  typeVariablePrefix: "<%",
+  typeVariableSuffix: "%>",
 };
 
 describe("ConfigService", () => {

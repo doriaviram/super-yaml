@@ -9,7 +9,7 @@ describe("CompileService", () => {
       .types({
         Student: {
           properties: {
-            name: "$.name",
+            name: "<% Var(name) %>",
             class: "Math",
           },
         },
@@ -70,5 +70,70 @@ describe("CompileService", () => {
     const result = CompileService.compileSaml(clientData);
 
     expect(result).toStrictEqual(clientData);
+  });
+
+  it("compileSaml => object as a variable => simple flow", async () => {
+    const clientYml: SymlObject = new SymlObjectBuilder()
+      .types({
+        Student: {
+          properties: {
+            name: "<% Var(name) %>",
+            class: "Math",
+          },
+        },
+      })
+      .clientData({
+        "TestStudent<Student>": {
+          name: {
+            myName: "Name",
+          },
+        },
+      })
+      .build();
+
+    const result = CompileService.compileSaml(
+      clientYml.clientData,
+      clientYml.types
+    );
+
+    expect(result).toStrictEqual({
+      TestStudent: {
+        name: {
+          myName: "Name",
+        },
+        class: "Math",
+      },
+    });
+  });
+
+  it("compileSaml => object as a variable => multiple keys", async () => {
+    const clientYml: SymlObject = new SymlObjectBuilder()
+      .types({
+        Student: {
+          properties: {
+            name: "<% Var(name1) %> + <% Var(name2) %>",
+            class: "Math",
+          },
+        },
+      })
+      .clientData({
+        "TestStudent<Student>": {
+          name1: {
+            myName: "Name",
+          },
+          name2: {
+            myName: "Name",
+          },
+        },
+      })
+      .build();
+
+    expect(() => {
+      CompileService.compileSaml(clientYml.clientData, clientYml.types);
+    }).toThrowError(
+      new Error(
+        `Cannot format function Var(name1) as part of a string, it's not a valid string`
+      )
+    );
   });
 });
