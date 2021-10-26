@@ -2,7 +2,7 @@ name: CI/Publish GH Page
 on:
   push:
     branches:
-      - master
+      - ignroe
 jobs:
   Deploy:
     runs-on: ubuntu-latest

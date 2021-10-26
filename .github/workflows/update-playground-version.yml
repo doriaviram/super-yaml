@@ -2,7 +2,7 @@ name: CI/Update playground package
 on:
   push:
     branches:
-      - master
+      - ignroe
 jobs:
   Deploy:
     runs-on: ubuntu-latest
