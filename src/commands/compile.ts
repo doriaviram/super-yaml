@@ -18,6 +18,7 @@ export default class Compile extends Command {
     typeKeyPrefix: flags.string({}),
     typeKeySuffix: flags.string({}),
     typeVariablePrefix: flags.string({}),
+    typeVariableSuffix: flags.string({}),
   };
 
   async run() {
@@ -33,6 +34,11 @@ export default class Compile extends Command {
     if (flags.typeVariablePrefix)
       ConfigService.initConfig({
         typeVariablePrefix: flags.typeVariablePrefix,
+      });
+
+    if (flags.typeVariableSuffix)
+      ConfigService.initConfig({
+        typeVariableSuffix: flags.typeVariableSuffix,
       });
 
     const syml = await FileSystemService.readSyml(source);

@@ -23,11 +23,11 @@ Quick demo: https://doriaviram.github.io/super-yaml/
 _types:
   MyCoolType:
     properties:
-      englishName: $.name # Expect name parameter
+      englishName: <% Var(name) %> # Expect name parameter
       geoData:
         city: Jerusalem # Const
-        country: $.country:Israel # Parameter with default value
-      hebrewName: $.name # Reuse same parameter
+        country: <% Var(country,Israel) %> # Parameter with default value
+      hebrewName: <% Var(name) %> # Reuse same parameter
 
 CoolExample1<MyCoolType>:
   name: SuperYaml
@@ -63,11 +63,11 @@ CoolExample2:
 _types:
   MyCoolType:
     properties:
-      englishName: $.name # Expect name parameter
+      englishName: <% Var(name) %> # Expect name parameter
       geoData:
         city: Jerusalem # Const
-        country: $.country:Israel # Parameter with default value
-      hebrewName: $.name # Reuse same parameter
+        country: <% Var(country,Israel) %> # Parameter with default value
+      hebrewName: <% Var($.name) %> # Reuse same parameter
 ```
 
 `config.syml`
@@ -108,8 +108,8 @@ CoolExample2:
 _types:
   MyCoolType:
     properties:
-      englishName: Mr. $.name
-      welcomeMessage: Mr. $.{name}, Hello
+      englishName: Mr. <% Var(name) %>
+      welcomeMessage: Mr. <% Var(name) %><% Var(name) %>, Hello
 CoolExample1<MyCoolType>:
   name: SuperYaml
 ```

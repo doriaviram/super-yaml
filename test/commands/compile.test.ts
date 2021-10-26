@@ -9,7 +9,7 @@ describe("compile", () => {
       _types: {
         Student: {
           properties: {
-            name: "$.name",
+            name: "<% Var(name) %>",
             class: "Math",
           },
         },
@@ -44,7 +44,7 @@ describe("compile", () => {
       _types: {
         Student: {
           properties: {
-            name: "$.name",
+            name: "<% Var(name) %>",
             class: "Math",
           },
         },
@@ -79,7 +79,7 @@ describe("compile", () => {
       _types: {
         Student: {
           properties: {
-            name: "ZZ.name",
+            name: "ZZ.Var(name)SS",
             class: "Math",
           },
         },
@@ -104,6 +104,8 @@ describe("compile", () => {
       "$$",
       "--typeVariablePrefix",
       "ZZ.",
+      "--typeVariableSuffix",
+      "SS",
     ]);
 
     const result = await FileSystemService.readYaml("test.yml");
@@ -145,7 +147,7 @@ describe("compile", () => {
       _types: {
         Student: {
           properties: {
-            name: "$.name",
+            name: "<% Var(name) %>",
             class: "Math",
           },
         },
