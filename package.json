@@ -12,7 +12,7 @@
     "@oclif/plugin-help": "^3",
     "js-yaml": "^4.0.0",
     "lodash": "^4.17.21",
-    "string-kit": "^0.12.5",
+    "string-kit": "^0.12.8",
     "tslib": "^1"
   },
   "devDependencies": {
